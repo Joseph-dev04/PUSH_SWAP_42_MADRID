@@ -6,7 +6,7 @@
 /*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:36:21 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/10 18:25:34 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/10 18:39:41 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,13 @@ int	ft_get_num(char *list_num, t_list **a)
 	i_comi = 0;
 	while (*list_num)
 	{
-		while (*list_num)
-		{
-			if (ft_isdigit(*list_num) || (*list_num == '-' && ft_isdigit(*(list_num + 1))))
-				break ;
-			if (*list_num != ' ' && *list_num != '"' && *list_num != '-')
-				return (ft_error());
-			if (*list_num == '"')
-				i_comi++;
-			list_num++;
-		}
-
+		if (ft_isdigit(*list_num) || (*list_num == '-' && ft_isdigit(*(list_num + 1))))
+			break ;
+		if (*list_num != ' ' && *list_num != '"' && *list_num != '-')
+			return (ft_error());
+		if (*list_num == '"')
+			i_comi++;
+		list_num++;
 		
 		if (*list_num)
 		{
@@ -86,6 +82,7 @@ int	ft_get_num(char *list_num, t_list **a)
 		}
 		index++;
 	}
+
 	if (i_comi % 2 != 0)
 		return (ft_error());
 	return (index);

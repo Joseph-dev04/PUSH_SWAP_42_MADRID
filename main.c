@@ -6,7 +6,7 @@
 /*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:31:38 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/10 18:23:53 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/10 18:35:51 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,7 @@ int main(int arc, char **argv)
         b = a;
         while (b)
         {
-			//ft_free(a);
-            printf("%i\n", b->value);
+			printf("%i\n", b->value);
             b = b->next;
         }
     }
