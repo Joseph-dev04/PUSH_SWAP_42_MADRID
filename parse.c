@@ -137,7 +137,7 @@ float compute_disorder(t_list *stack_a)
 	mistakes = 0;
 	total_pairs = 0;
 	n_nodo_a = stack_a;
-	n_nodo_b = stack_a;
+	n_nodo_b = n_nodo_a;
 	while (n_nodo_a != NULL)
 	{
 		n_nodo_b = n_nodo_a->next;
