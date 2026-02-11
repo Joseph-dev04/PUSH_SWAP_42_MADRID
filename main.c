@@ -47,6 +47,7 @@ int main(int arc, char **argv)
     t_list  *a;
     t_list  *b; 
     int     i;
+	int		size;
     
     a = NULL;
 	b = NULL;
@@ -55,10 +56,9 @@ int main(int arc, char **argv)
         i = 1;
         while (i < arc)
         {
-            if (ft_get_num(argv[i], &a) == -1)
-            {
-                return (-1);
-            }
+            size = ft_get_num(argv[i], &a);
+            if (size == -1)
+                return (1);
             i++;
         }
         printf("índice de desorden: %f\n", compute_disorder(a));
@@ -68,6 +68,7 @@ int main(int arc, char **argv)
 			printf("%i\n", b->value);
             b = b->next;
         }
+		ft_free(a);
     }
     return (0);
 }
