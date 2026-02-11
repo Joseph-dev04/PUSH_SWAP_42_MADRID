@@ -55,6 +55,18 @@ void	ft_free(t_list *a)
 	}
 }
 
+void	ft_free_a(t_list *a)
+{
+	t_list	*temp;
+
+	while (a != NULL)
+	{
+		temp = a;
+		a = a->next;
+		free(temp);
+	}
+}
+
 t_list	*ft_new_list(int num, int index)
 {
 	t_list	*new;
