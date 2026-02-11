@@ -61,7 +61,7 @@ int main(int arc, char **argv)
             }
             i++;
         }
-        
+        printf("índice de desorden: %f\n", compute_disorder(a));
         b = a;
         while (b)
         {
