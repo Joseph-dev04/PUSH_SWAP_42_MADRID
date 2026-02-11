@@ -35,5 +35,8 @@ void 	ft_add_back(t_list **lst, t_list *new);
 void	ft_sa(t_list **a);
 
 static int comprobar_duplicados(t_list **a);
+float compute_disorder(t_list *stack_a);
+
+
 
 #endif
