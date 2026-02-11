@@ -121,7 +121,8 @@ int	ft_get_num(char *list_num, t_list **a)
 	if (comprobar_duplicados(a) == 0)
 	{
 		ft_free_a(*a);
-		return (ft_error());
+		ft_error();
+		return (-1);
 	}
 	return (index);
 }
