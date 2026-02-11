@@ -115,12 +115,12 @@ int	ft_get_num(char *list_num, t_list **a)
 	}
 	if (i_comi % 2 != 0)
 	{
-		ft_free(*a);
+		ft_free_a(*a);
 		return (ft_error());
 	}
 	if (comprobar_duplicados(a) == 0)
 	{
-		ft_free(*a);
+		ft_free_a(*a);
 		return (ft_error());
 	}
 	return (index);
