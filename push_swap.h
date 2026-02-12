@@ -6,7 +6,7 @@
 /*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:29:24 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/10 12:39:40 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/12 11:15:33 by jopajuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,14 @@ void    ft_rr(t_list **a, t_list **b);
 void    ft_rb(t_list **b);
 void    ft_ra(t_list **a);
 
-void    pa(t_list **a);
-void    pb(t_list **b);
+void    ft_pa(t_list **a, t_list **b);
+void    ft_pb(t_list **a, t_list **b);
 
 static int comprobar_duplicados(t_list **a);
 float compute_disorder(t_list *stack_a);
+
 void	ft_radix(t_list **a, t_list **b);
+int	num_len(int nb);
 
 
 #endif
