@@ -12,16 +12,37 @@
 
 #include "push_swap.h"
 
+void	ft_ss(t_list **a, t_list **b)
+{
+	ft_sa(a);
+	ft_sb(b);
+	write(1, "ss\n", 3);
+}
+
 void	ft_sa(t_list **a)
 {
 	t_list	*first;
 	t_list	*second;
-	int		temp;
 
+	if (!*a || !(*a)->next)
+		return ;
 	first = *a;
-	second = (*a)->next;
-	temp = first->value;
-	first->value = second->value;
-	second->value = temp;
+	second = first->next;
+	first->next = second->next;
+	second->next = first;
+	*a = second;
+	write(1, "sa\n", 3);
 }
 
+void	ft_sb(t_list **b)
+{
+	t_list	*first;
+	t_list	*second;
+
+	first = *b;
+	second = first->next;
+	first->next = second->next;
+	second->next = first;
+	*b = second;
+	write(1, "sb\n", 3);
+}
