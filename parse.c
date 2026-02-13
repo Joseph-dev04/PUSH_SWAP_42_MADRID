@@ -93,8 +93,16 @@ int	ft_get_num(char *list_num, t_list **a)
 	{
 		while (*list_num)
 		{
-			if (ft_isdigit(*list_num) || (*list_num == '-' && ft_isdigit(*(list_num + 1))))
+			if (ft_isdigit(*list_num))
+			{printf("no llegue %c\n", *list_num);
+				break;
+			}
+			if (*list_num == '-')
+			{
+				if (ft_isdigit(*list_num))
+					list_num--;
 				break ;
+			}
 			if (*list_num != ' ' && *list_num != '"' && *list_num != '-')
 			{
 				ft_free(*a);
@@ -102,15 +110,17 @@ int	ft_get_num(char *list_num, t_list **a)
 			}
 			if (*list_num == '"')
 				i_comi++;
+			printf("uno a uno: %c\n", *list_num);
+
 			list_num++;
 		}
-
-		
+list_num++;
+		printf("es esto %c\n", *list_num);
 		if (*list_num)
 		{
 			ft_itoa_pro(&list_num, a, index);
 		}
-		// list_num++;
+		//list_num++;
 		index++;
 	}
 	if (i_comi % 2 != 0)

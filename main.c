@@ -41,14 +41,13 @@
 // 	}
 // 	return (0);
 // }
-
+/*
 int main(int arc, char **argv)
 {
     t_list  *a;
     t_list  *b; 
     int     i;
 	int		size;
-    
     a = NULL;
 	b = NULL;
     if (arc > 1)
@@ -61,14 +60,47 @@ int main(int arc, char **argv)
                 return (1);
             i++;
         }
-        printf("índice de desorden: %f\n", compute_disorder(a));
-        b = a;
-        while (b)
+       printf("índice de desorden: %f\n", compute_disorder(a));
+		// simple_extraccion(&a,&b);
+		medium_extraccion(&a, &b);
+        printf("RESULTAO--->");
+        while (a)
         {
-			printf("%i\n", b->value);
-            b = b->next;
+			printf("%i ->", a->value);
+            a = a->next;
         }
 		ft_free(a);
+		ft_free(b);
     }
     return (0);
+}*/
+int main()
+{
+	t_list *a;
+	t_list *b;
+	a = NULL;
+	b = NULL;
+	int i;
+	
+	i = -41;
+	a = ft_new_list(i, i);
+	t_list *temp;
+	temp = a;
+	printf("Enviado por consola");
+	while(i < 0)
+	{
+		i++;
+		ft_add_back(&a, ft_new_list(i, i));
+		printf(" %i,", temp->value);
+		temp = temp->next;
+	}
+		printf("\nOrdenado:");
+
+	medium_extraccion(&a,&b);
+	while (a)
+    {
+		printf("%i,", a->value);
+        a = a->next;
+    }
+	return (0);
 }

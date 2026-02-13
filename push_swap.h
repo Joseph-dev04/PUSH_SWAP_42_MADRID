@@ -37,6 +37,23 @@ void	ft_sa(t_list **a);
 static int comprobar_duplicados(t_list **a);
 float compute_disorder(t_list *stack_a);
 
+void	simple_extraccion(t_list **a, t_list **b);
 
+void	ft_sb(t_list **b);
+void	ft_sa(t_list **a);
+void	ft_ss(t_list **a, t_list **b);
 
+void    ft_rr(t_list **a, t_list **b);
+void    ft_rb(t_list **b);
+void    ft_ra(t_list **a);
+
+void    ft_pa(t_list **a, t_list **b);
+void    ft_pb(t_list **a, t_list **b);
+int	ft_size_lis(t_list *a);
+
+void	ft_rra(t_list **a);
+void	ft_rrb(t_list **b);
+void	ft_rrr(t_list **a, t_list **b);
+
+void medium_extraccion(t_list **a, t_list **b);
 #endif
