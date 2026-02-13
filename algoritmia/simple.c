@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   simple.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/11 15:51:25 by aitorres          #+#    #+#             */
+/*   Updated: 2026/02/13 03:39:34 by aitorres         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 /*
 --simple fuerza el uso de el algoritmo O(n 2) seleccionado.
  */
@@ -13,41 +26,101 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-void simple_extraccion(t_list **a, t_list **b)
+static void	rotar_a(t_list **a, t_list *nodo_a, int min_posicion)
 {
-	t_list	*nodo_b;
+	int	size;
+
+	if (ft_size_lis(*a) % 2 == 1)
+		size = (ft_size_lis(*a) / 2) + 1;
+	else
+		size = ft_size_lis(*a) / 2;
+	if (min_posicion > size)
+	{
+		while ((*a)->value != nodo_a->value)
+			rra(a);
+	}
+	else
+	{
+		while ((*a)->value != nodo_a->value)
+			ra(a);
+	}
+}
+
+void	simple_extraccion(t_list **a, t_list **b)
+{
 	t_list	*nodo_a;
 	t_list	*comparate_nodo_a;
-	void	*temp_mayor;
-	int		size;
+	int		posicion;
+	int		min_posicion;
 
-	nodo_a = *a;
-	comparate_nodo_a = *a;
-
-	comparate_nodo_a = comparate_nodo_a->next;
-	nodo_b = *b;
-
-	while(nodo_a)
+	while (*a)
 	{
-		size = (ft_size_lis(nodo_a) / 2);
-		temp_mayor = nodo_a;
-
-		if (nodo_a->value > comparate_nodo_a->value)
+		nodo_a = *a;
+		comparate_nodo_a = (*a)->next;
+		posicion = 1;
+		min_posicion = 0;
+		while (comparate_nodo_a)
 		{
-			// temp_mayor = &nodo_a;
+			if (nodo_a->value > comparate_nodo_a->value)
+			{
+				nodo_a = comparate_nodo_a;
+				min_posicion = posicion;
+			}
+			posicion++;
 			comparate_nodo_a = comparate_nodo_a->next;
 		}
-		else
-		{
-			temp_mayor = comparate_nodo_a;
-			nodo_a = temp_mayor;
-
-		}
-		comparate_nodo_a = comparate_nodo_a->next;
-
+		rotar_a(a, nodo_a, min_posicion);
+		pb(a, b);
 	}
-
-
-
+	while (*b)
+		pa(a, b);
 }
+
+
+
+
+
+// void simple_extraccion(t_list **a, t_list **b)
+// {
+// 	t_list	*nodo_a;
+// 	t_list	*comparate_nodo_a;
+// 	int		size;
+// 	int		posicion;
+// 	int		min_posicion;
+	
+// 	while(*a)
+// 	{
+// 		nodo_a = *a;
+// 		comparate_nodo_a = (*a)->next;
+// 		posicion = 1;
+// 		min_posicion = 0;
+		
+// 		while(comparate_nodo_a)
+// 		{
+// 			if (nodo_a->value > comparate_nodo_a->value)
+// 			{
+// 				nodo_a = comparate_nodo_a;
+// 				min_posicion =posicion;
+// 			}
+// 			posicion++;
+// 			comparate_nodo_a = comparate_nodo_a->next;
+// 		}
+// 		if (ft_size_lis(*a) % 2 == 1)
+// 			size = (ft_size_lis(*a) / 2) + 1;
+// 		else
+// 			size = ft_size_lis(*a) / 2;
+			
+// 		if (min_posicion > size)
+// 			while ((*a)->value != nodo_a->value)
+// 				rra(a);
+// 		else
+// 			while ((*a)->value != nodo_a->value)
+// 				ra(a);
+// 		pb(a, b);
+// 	}
+// 	while(*b)
+// 	{
+// 		pa(a, b);
+// 	}
+// }
 
