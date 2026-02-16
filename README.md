@@ -1,139 +1,130 @@
-# PUSH SWAP
+# 📖 Push_swap
 
+Este proyecto ha sido creado como parte del currículo de 42 por jopajuel, aitorres
+
+## Descripción
+Este programa trata de ordenar una serie de números, tanto positivos como negativos, en orden creciente, de menor a mayor.
+Soo disponemos de dos pilas de datos, comenzaremos con ellas vacíos, los números que le metamos al programa, se añaden al stack A y B empieza vacío. Todos los números se suman inicialmente a la pila A y la pila B está vacía.
+COmo resumen:
 Para empezar:
 * El stack a contiene una cantidad aleatoria de números positivos y/o negativos.
 * El stack b está vacío.
 * El objetivo es ordenar los números del stack a en orden ascendente. Para hacerlo están disponibles las siguientes operaciones:
 
-      sa (swap a): Intercambia los dos primeros elementos del stack a.
-                  No hace nada si hay solo uno o ningún elemento.
+
+### Operaciones 🔁
+
+| Operaciones | Explicación |
+| :--- | :--- |
+| sa | swap a - Intercambia los dos primeros elementos del stack a. No hace nada si hay solo uno o ningún elemento. |
+| sb | swap b - intercambia los dos primeros elementos encima del stack b. No hace nada si hay solo uno o ningún elemento.|
+| ss | swap a y swap b a la vez. |
+| pa | push a -  toma el primer elemento del stack b y lo pone encima del stack a. No hace nada si b está vacío.|
+| pb | push b -  toma el primer elemento del stack a y lo pone encima del stack b. No hace nada si a está vacío.|
+| ra | rotate a - desplaza hacia arriba todos los elementos del stack a una posición, el primer elemento se convierte en el último. |
+| rb | rotate b - desplaza hacia arriba todos los elementos del stack b una posición, el primer elemento se convierte en el último. |
+| rr | ra y rb a la vez. |
+| rra | reverse rotate a - desplaza hacia abajo todos los elementos del stack a una posición, el último elemento se convierte en el primero. |
+| rrb | reverse rotate b - desplaza hacia abajo todos los elementos del stack b una posición, el último elemento se convierte en el primero. |
+| rrr | rra y rrb a la vez. |
 
 
-      sb (swap b): Intercambia los dos primeros elementos del stack b.
-                No hace nada si hay solo uno o ningún elemento.
+Este programa nos ordenrá los números según el tipo de orden, disponemos de 4 métodos:
 
 
-      ss : sa y sb a la vez.
+Disponemos de 4 métodos de ordenacion, los podremos aplicar con las siguientes flags:
+
+| flags | Explicación |
+| :--- | :--- |
+| --simple, | fuerza algoritmo O(n2) seleccionado. |
+| --medium | fuerza el uso de el algoritmo O(n√n) seleccionado.|
+| --complex | fuerza el uso de el algoritmo O(n log n) seleccionado.|
+| --adaptive | uerza el uso de el algoritmo adaptativo basado en desorden seleccionado. Este será el comportamiento por defecto si no se indica un selector. |
+
+Por último, 
+La salida por consola de esta estrategia deberá ser la secuencia de operaciones (sa, sb, rra,....) necesarias para ordenar el stack.
+Tambien nos mostrará el índice de desorden, con un mensaje en ppantalla. Este dato se medirá en 0 si está ordenado y 1 Si está muy muy desordenado.
+Todo lo que haya entre medias del 0 y el 1, significará que el stack se encuentra parcialmente ordenado, pero sigue teniendo desorden. 
 
 
-      pa (push a): Toma el primer elemento del stack b y lo coloca el primero en el stack a.
-          No hace nada si b está vacío.
+### Algoritmia
+
+* Algoritmo simple (O(n2)):
+	* Se usa cuando el conjunto de datos es pequeño o el nivel de desorden es bajo.
+		* 10 elementos → 10 × 10 = 100 operaciones máximas
+		* 100 elementos → 100 × 100 = 10,000 operaciones
+	* PD: Crecimiento cuadrático.
+
+* Algoritmo intermedio (O(n√n)):
+	* Se usa cuando el desorden es moderado. Divide parcialmente el problema.
+		* 100 elementos
+		* √100 = 10
+		* 100 × 10 = 1,000 operaciones
+	* PD: Es más eficiente que O(n²), pero menos que O(n log n).
+
+* Algoritmo complejo (O(n log n)):
+	* Se usa cuando el desorden es alto. Divide el problema en partes y las combina eficientemente.
+		* 100 elementos
+		* log₂(100) ≈ 7
+		* 100 × 7 = 700 operaciones aproximadas
+	PD: Mucho más eficiente que O(n²) para valores grandes.
+
+* Algoritmo adaptativo personalizado: 
+	* Examina su grado de complejidad, según ese grado de complejidad aplicará un Algoritmo simple, intermedio o complejo.
+		* Índice de desorden bajo: Si desorden < 0,2, el método elegido debe ejecutarse en O(n).
+		* Índice de desorden medio: Si 0,2 ≤ desorden < 0,5, el método elegido debe ejecutarse en O(n√n).
+		* Índice de desorden alto: Si desorden ≥ 0,5, el método elegido debe ejecutarse en O(n log n).
 
 
-      pb (push b): Toma el primer elemento del stack a y lo coloca el primero en el stack b.
-                  No hace nada si a está vacío.
+## Instrucciones
+
+Una vez tengas el respositorio, ejecuta la consola/Terminal dentro de ella.
+escribe `make`para compilar todo, make clean para borrar la creaccioón de lso objetos.
+A continuacion ekecuta ese archivo nuevo creado llamado pushswap, escribe en consola `./push_swap` y acontinuación todos los números que quieras, negativos o positivos, puedes meterlos entre `"8 10 8"` sin ellas `8 4 -55` o mezclado `"10 -999 78" 87  6 -888 "4"` incluso con espacios de separación entre ellos `"10             -999            78" 87  6 -888      "4"`.
+En caso que se detecten números duplicados o caracteres no admitidos como un signo negativo o positivo, el programa trasnmitirá un `ERROR`.
+
+Una vez tengas tu lista, pulsa Enter y disfruta de una cadena de mensajes de cada paso Operación que ha realizado el programa.
+
+		./push_swap "10             -999            78" 87  6 -888      "4"
+		ra
+		pb
+		rra
+		pb
+		pb
+		ra
+		pb
+		ra
+		pb
+		pb
+		pa
+		pa
+		pa
+		pa
+		pa
+		pa
+
+Como hablamos anteriormente, podemos incluir una serie de flags antes de ejecutar el programa con el grado de complejidad, en el ejemplo anterior, al no haber escrito ninguno, se ejecutará con el adaptativo.
+
+		./push_swap --simple "10             -999            78" 87  6 -888      "4"
+		rra
+		pb
+		rra
+		pb
+		rra
+		pb
+		ra
+		pb
+		pb
+		pa
+		pa
+		pa
+		pa
+		pa
 
 
-      ra (rotate a): Desplaza hacia arriba todos los elementos del stack a una posición,
-                    convirtiendo el primer elemento en el último.
+## Recursos
 
-
-      rb (rotate b): Desplaza hacia arriba todos los elementos del stack b una posición,
-                     convirtiendo el primer elemento en el último.
-
-
-      rr : ra y rb a la vez.
-  
-
-      rra (reverse rotate a): Desplaza hacia abajo todos los elementos del stack a una posición,
-                             convirtiendo el último elemento en el primero.
-
-
-      rrb (reverse rotate b): Desplaza hacia abajo todos los elementos del stack b una posición,
-                             convirtiendo el último elemento en el primero
-
-
-      rrr : rra y rrb a la vez.
+Para este proyecto se ha utilizado disntitas fuentes de internet para comprender fallos de compilación. Se ha utilizado la IA como recurso tras no encontrar errores que deberían funcionar si o si y no es conseguido por 4 ojos humanos ver donde estaba. Tras su explicación hemos descubierto pequeños fallos de escritura que nos nos dejaba avanzar.
 
 
 
-
-### ¿Qué implica “algoritmo simple O(n²)” en push_swap?
-
-En un push_swap, tienes dos stacks (A y B) y solo puedes manipularlos con operaciones:
-sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr.
-
-Un algoritmo simple no intenta ser eficiente en número de operaciones, sino extremadamente fácil de implementar.
-La idea de O(n²) es que por cada elemento hagas un recorrido casi completo de la lista.
-
-## Método 1: Ordenación por selección (Selection Sort adaptado a push_swap)
-Este es uno de los más usados en proyectos push_swap para la parte simple porque:
-
-Algoritmo simple — Selección del mínimo (O(n²)):
-Recorro el stack A nodo a nodo para localizar el valor mínimo.
-Muevo ese nodo a la cima mediante ra o rra según esté más cerca del principio o del final.
-Lo envío a B mediante pb.
-Repito el proceso hasta vaciar A.
-Finalmente devuelvo todos los elementos de B a A con pa, quedando A ordenado en orden ascendente.
-La complejidad es O(n²) porque para cada extracción del mínimo necesito un recorrido completo del stack A.
-
-Inconveniente:
-Genera demasiadas operaciones.
-
-
-
-## Método 2: Ordenación por inserción (Insertion Sort adaptado a push_swap)
-Es muy parecido al Selection, pero conceptualmente distinto.
-
-Cómo funciona Insertion Sort en arrays
-Empiezas desde el segundo elemento.
-Lo vas “insertando” en la parte izquierda ya ordenada.
-En push_swap
-Dejas un elemento en A.
-Mueves el siguiente a su sitio en B usando:
-buscar dónde debería ir
-llevar B a esa posición
-pb
-Al final vuelves todo a A.
-Problema:
-Insertion sort es más difícil de adaptar porque push_swap no permite insertar en medio fácilmente.
-Pero es válido como O(n²).
-
-## Método 3: Bubble Sort adaptado a push_swap
-Este es fácil de explicar pero malo para implementar porque bubble sort intercambia elementos adyacentes, y en una lista enlazada con push_swap es engorroso.
-
-Como solo tienes acceso a los dos primeros nodos de la lista (stack_a y stack_a->next), el proceso sería este:
-
-Comparar: Miras los dos primeros nodos de A.
-Swap (si hace falta): Si el primero es mayor que el segundo, haces sa.
-Rotar: Haces ra. Ahora el que era el segundo está arriba, y el que era el primero (el más grande) ha bajado una posición.
-Repetir: Haces esto 
-𝑛
-n veces (donde 
-𝑛
-n es el número de elementos).
-Bucle externo: Al dar una vuelta completa, el número más grande de todos habrá llegado al fondo de la lista. Tienes que repetir todo el proceso otra vez para el siguiente número más grande.
-3. Ejemplo visual con [3, 1, 4, 2]
-Estado inicial: A: [3, 1, 4, 2]
-¿3 > 1? Sí. → sa → A: [1, 3, 4, 2]
-ra → A: [3, 4, 2, 1] (El 1 ya no lo tocamos en esta vuelta).
-¿3 > 4? No.
-ra → A: [4, 2, 1, 3]
-¿4 > 2? Sí. → sa → A: [2, 4, 1, 3]
-ra → A: [4, 1, 3, 2]
-Si sigues haciendo esto, al final de la primera vuelta el 4 (el más grande) estará abajo del todo.
-
-
-## Método 4: Extracción simple del mínimo/máximo
-Esto es realmente una forma primitiva de selection sort:
-ir sacando siempre el mínimo.
-
-Puedes hacerlo de dos formas:
-
-A) Orden ascendente → extraer mínimo
-Busca mínimo → súbelo arriba → pb
-Repite
-B) Orden descendente → extraer máximo
-Busca máximo → súbelo arriba → pb
-Es literalmente una versión simplificada del selection sort.
-
-¿Qué método te recomiendo elegir para tu O(n²)?
-El más sencillo, claro y típico para explicar es:
-→ Adaptación del orden por selección (Selection Sort)
-Porque te permite explicar:
-
-cómo buscar un nodo mínimo en una lista
-cómo usar operaciones ra y rra según con cuál llegas más rápido
-por qué la complejidad es O(n²)
-cómo indexar ayuda (aunque no obligatorio)
-Y además se adapta de manera natural a push_swap.
