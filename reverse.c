@@ -11,11 +11,12 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+extern int contador;
 void	ft_rr(t_list **a, t_list **b)
 {
 	ft_ra(a);
 	ft_rb(b);
+	contador++;
 	write (1, "rr\n", 3);
 }
 
@@ -29,6 +30,7 @@ void	ft_rb(t_list **b)
 	*b = (*b)->next;
 	first->next = NULL;
 	ft_add_back(b, first);
+	contador++;
 	write (1, "rb\n", 3);
 }
 
@@ -42,5 +44,6 @@ void	ft_ra(t_list **a)
 	*a = (*a)->next;
 	first->next = NULL;
 	ft_add_back(a, first);
+	contador++;
 	write (1, "ra\n", 3);
 }

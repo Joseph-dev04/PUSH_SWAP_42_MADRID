@@ -3,104 +3,82 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:31:38 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/10 18:35:51 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/13 10:06:08 by jopajuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-// int	main(int arc, char **argv)
-// {
-// 	t_list	*a;
-// 	t_list	*b;
-// 	int		i;
-	
-// 	a = NULL;
-// 	b = NULL;
-// 	if (arc != 1)
-// 	{
-// 		i = 0;
-// 		if (ft_get_num(argv[i], &a))
-// 		{
-// 			// ft_sa(&a);
-// 			while (a)
-// 			{
-// 				printf("%i\n", a->value);
-// 				a = a->next;
-// 			}
-// 		}
-// 		else
-// 		{
-// 			// ft_free(a);
-// 			return (-1);
-// 		}
-// 	}
-// 	return (0);
-// }
-/*
-int main(int arc, char **argv)
+int contador = 0;
+
+int	charge_num(char **argv, int arc, t_list **a, t_list **b, int i)
 {
-    t_list  *a;
-    t_list  *b; 
-    int     i;
+	int	size;
+
+	while (i < arc)
+	{
+		size = ft_get_num(argv[i], a);
+		if (size == -1)
+			return (1);
+		i++; 
+	}
+	return (0);
+}
+
+void	ft_type_algoritm(char **argv, int arc, t_list **a, t_list **b)
+{
+	if (ft_strnstr(argv[1], "--simple", ft_strlen(argv[1])))
+	{
+		if (!charge_num(argv, arc, a, b, 2))
+			simple_extraccion(a,b);
+	}
+	else if (ft_strnstr(argv[1], "--medium", ft_strlen(argv[1])))
+	{
+		if (!charge_num(argv, arc, a, b, 2))
+			medium_extraccion(a, b);
+	}
+	else if (ft_strnstr(argv[1], "--complex", ft_strlen(argv[1])))
+	{
+		if (!charge_num(argv, arc, a, b, 2))
+			ft_radix(a, b, ft_size_lis(*a));
+	}
+	/*else if (ft_strnstr(argv[1], "--adaptive", ft_strlen(argv[1])))
+	{
+		if (!charge_num(argv, arc, a, b, 2))
+			return ;
+	}
+	else
+	{
+		if (!charge_num(argv, arc, a, b, 2))
+		return ;
+	}*/
+}
+
+int	main(int arc, char **argv)
+{
+	t_list	*a;
+	t_list	*b;
+	int		i;
 	int		size;
-    a = NULL;
-	b = NULL;
-    if (arc > 1)
-    {
-        i = 1;
-        while (i < arc)
-        {
-            size = ft_get_num(argv[i], &a);
-            if (size == -1)
-                return (1);
-            i++;
-        }
-       printf("índice de desorden: %f\n", compute_disorder(a));
-		// simple_extraccion(&a,&b);
-		medium_extraccion(&a, &b);
-        printf("RESULTAO--->");
-        while (a)
-        {
-			printf("%i ->", a->value);
-            a = a->next;
-        }
-		ft_free(a);
-		ft_free(b);
-    }
-    return (0);
-}*/
-int main()
-{
-	t_list *a;
-	t_list *b;
+
 	a = NULL;
 	b = NULL;
-	int i;
-	
-	i = -41;
-	a = ft_new_list(i, i);
-	t_list *temp;
-	temp = a;
-	printf("Enviado por consola");
-	while(i < 0)
+	if (arc > 1)
 	{
-		i++;
-		ft_add_back(&a, ft_new_list(i, i));
-		printf(" %i,", temp->value);
-		temp = temp->next;
-	}
-		printf("\nOrdenado:");
-
-	medium_extraccion(&a,&b);
-	while (a)
-    {
-		printf("%i,", a->value);
-        a = a->next;
+		ft_type_algoritm(argv, arc, &a, &b);
+        printf("índice de desorden: %f\n", compute_disorder(a));
+        b = a;
+        while (b)
+        {
+			printf("value :%i index: %i\n", b->value, b->index);
+            b = b->next;
+        }
+		ft_free_a(a);
     }
-	return (0);
+	printf("%i\n", contador);
+    return (0);
 }

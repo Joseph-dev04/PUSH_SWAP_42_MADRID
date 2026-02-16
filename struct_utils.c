@@ -59,11 +59,12 @@ void	ft_free_a(t_list *a)
 {
 	t_list	*temp;
 
-	while (a != NULL)
+	temp = a;
+	while (!a)
 	{
-		temp = a;
 		a = a->next;
 		free(temp);
+		temp = a;
 	}
 }
 

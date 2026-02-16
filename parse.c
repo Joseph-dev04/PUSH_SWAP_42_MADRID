@@ -13,128 +13,72 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-void	ft_itoa_pro(char **str, t_list **a, int index)
+
+static int	comprobar_duplicados(t_list	**a)
 {
-	int		i;
+	t_list	*n;
+	t_list	*move;
+
+	n = *a;
+	while (n)
+	{
+		move = n->next;
+		while (move)
+		{
+			if(n->value == move->value)
+				return (0);
+			move = move->next;
+		}
+		n = n->next;
+	}
+	return (1);
+}
+
+
+void	ft_itoa_pro(char *str, t_list **a, int index, int *i)
+{
+	int		j;
 	char	*num;
 	t_list	*new;
 
-	i = 0;
-	while (ft_isdigit((*str)[i]))
-		i++;
-	num = ft_substr(*str, 0, i);
-	*str = *str + i;
+	j = 0;
+	//printf("en itoa %s\n", str);
+	while (ft_isdigit(str[j]) || (str[j] == '-'))
+		j++;
+	num = ft_substr(str, 0, j);
+	*i += j;
 	new = ft_new_list(ft_atoi(num), index);
 	free(num);
 	ft_add_back(a, new);
 }
 
-// "    123  "
-// int	ft_get_num(char *list_num, t_list **a)
-// {
-// 	int	index;
-
-// 	index = 0;
-// 	while (*list_num)
-// 	{
-// 		if (*list_num >= '\t' && *list_num <= '\r')
-// 		{//printf("%c\n", *list_num);
-// 			return (ft_error());
-// 		}
-// 		if (*list_num != ' ' && !ft_isdigit(*list_num))
-// 		{//printf("%c\n", *list_num);
-// 			return (ft_error());
-// 		}
-// 		if (*list_num >= '0' && *list_num <= '9')
-// 		{
-// 			//printf("%i\n", index);
-// 			ft_itoa_pro(&list_num, a, index);
-// 		}
-// 		if (*list_num)
-// 			list_num++;
-// 		index++;
-// 	}
-// 	return (index);
-// }
-
-
-static int comprobar_duplicados(t_list **a)
-{
-	t_list	*n_nodo;
-	t_list	*sub_n_nodo;
-
-	n_nodo = *a;
-	sub_n_nodo = *a;
-	while (n_nodo != NULL)
-	{
-		sub_n_nodo = *a;
-		sub_n_nodo = n_nodo->next;
-		while (sub_n_nodo != NULL)
-		{
-			if (n_nodo->value == sub_n_nodo->value)
-				return (0);
-			sub_n_nodo = sub_n_nodo->next;
-		}
-		sub_n_nodo = *a;
-		n_nodo = n_nodo->next;
-	}
-	return (1);
-}
-
 int	ft_get_num(char *list_num, t_list **a)
 {
 	int		i_comi;
-	int	index;
+	int	i;
 
-	index = 0;
-
+	i = 0;
 	i_comi = 0;
-	while (*list_num)
+	while (list_num[i])
 	{
-		while (*list_num)
-		{
-			if (ft_isdigit(*list_num))
-			{printf("no llegue %c\n", *list_num);
-				break;
-			}
-			if (*list_num == '-')
-			{
-				if (ft_isdigit(*list_num))
-					list_num--;
-				break ;
-			}
-			if (*list_num != ' ' && *list_num != '"' && *list_num != '-')
-			{
-				ft_free(*a);
-				return (ft_error());
-			}
-			if (*list_num == '"')
-				i_comi++;
-			printf("uno a uno: %c\n", *list_num);
-
-			list_num++;
-		}
-list_num++;
-		printf("es esto %c\n", *list_num);
-		if (*list_num)
-		{
-			ft_itoa_pro(&list_num, a, index);
-		}
-		//list_num++;
-		index++;
-	}
-	if (i_comi % 2 != 0)
-	{
-		ft_free_a(*a);
-		return (ft_error());
+		if (list_num[i] == '-' && !ft_isdigit(list_num[i + 1]))
+			return (ft_error());
+		else if ((list_num[i] != ' ' && !ft_isdigit(list_num[i])) && list_num[i] != '-')
+			return (ft_error());
+		else if (list_num[i] >= '\t' && list_num[i] <= '\r')
+			return (ft_error());
+		else if (list_num[i] == ' ')
+			i++;
+		if (ft_isdigit(list_num[i]) || (list_num[i] == '-' && ft_isdigit(list_num[i + 1])))
+			ft_itoa_pro(&list_num[i], a, 0, &i);
+		else if (!(list_num[i] == '-' && ft_isdigit(list_num[i + 1])))
+			return (ft_error());
+		if (list_num[i])
+			i++;
 	}
 	if (comprobar_duplicados(a) == 0)
-	{
-		ft_free_a(*a);
-		ft_error();
-		return (-1);
-	}
-	return (index);
+		return (ft_error());
+	return (0);
 }
 
 

@@ -1,22 +1,4 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   intermedio.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/12 12:02:23 by aitorres          #+#    #+#             */
-/*   Updated: 2026/02/13 03:42:29 by aitorres         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-
 #include "push_swap.h"
-#include <stdio.h>
-
-
-
-
 static void	ft_reset_index(t_list **a)
 {
 	t_list	*nodo_a;
@@ -83,7 +65,7 @@ static void index_mayor_a_menor(t_list **a)
 	}
 }
 
-static void	semi_colocacion_b(t_list **a, t_list **b)
+void	semi_colocacion_b(t_list **a, t_list **b)
 {
 	int	r_size;
 	int	i;
@@ -150,7 +132,7 @@ static void	pasar_b_a(t_list **a, t_list **b)
 		else
 			while ((*b)->index != i)
 				ft_rrb(b);
-		ft_pa(a,b);
+		ft_pa(a, b);
 		i++;
 	}
 }
@@ -197,18 +179,18 @@ void medium_extraccion(t_list **a, t_list **b)
 // 	{
 // 		if ((*a)->index <= i)
 // 		{
-// 			ft_pb();
+// 			pb();
 // 			if (ft_size_lis(*b) > 1)
-// 				ft_rb(b);
+// 				rb(b);
 // 			i++;
 // 		}	 
 // 		else if ((*a)->index <= i + r_size)
 // 		{
-// 			ft_pb();
+// 			pb();
 // 			i++;
 // 		}
 // 		else
-// 			ft_ra();
+// 			ra();
 		
 
 // 	}
@@ -216,7 +198,5 @@ void medium_extraccion(t_list **a, t_list **b)
 // 	{
 
 // 	}
-// 		ft_pa();
+// 		pa();
 // }
-
-

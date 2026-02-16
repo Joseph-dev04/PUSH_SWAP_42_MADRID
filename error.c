@@ -15,5 +15,5 @@
 int	ft_error()
 {
 	write (1, "Error\n", 6);
-	return (0);
+	return (-1);
 }

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+extern int contador;
 void	ft_rra(t_list **a)
 {
 	t_list	*first;
@@ -28,33 +28,9 @@ void	ft_rra(t_list **a)
 	plast->next = NULL;
 	last->next = first;
 	*a = last;
+	contador++;
 	write (1, "rra\n", 4);
 }
-
-/* void	ft_rra(t_list **a)
-{
-	t_list	*prev;
-	t_list	*last;
-
-	if (!a || !*a || !(*a)->next)
-		return;
-
-	prev = NULL;
-	last = *a;
-
-	while (last->next)
-	{
-		prev = last;
-		last = last->next;
-	}
-
-	prev->next = NULL;   // el penúltimo ahora es el último
-	last->next = *a;     // el antiguo último apunta al primero
-	*a = last;           // actualizamos head
-
-	write(1, "rra\n", 4);
-} */
-
 
 void	ft_rrb(t_list **b)
 {
@@ -72,6 +48,7 @@ void	ft_rrb(t_list **b)
 	plast->next = NULL;
 	last->next = first;
 	*b = last;
+	contador++;
 	write (1, "rrb\n", 4);
 }
 
@@ -79,5 +56,6 @@ void	ft_rrr(t_list **a, t_list **b)
 {
 	ft_rra(a);
 	ft_rrb(b);
+	contador++;
 	write (1, "rrr\n", 4);
 }
