@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:39:22 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/10 12:27:11 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/16 18:37:15 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,14 +59,26 @@ void	ft_free_a(t_list *a)
 {
 	t_list	*temp;
 
-	temp = a;
-	while (!a)
+	while (a)
 	{
+		temp = a;
 		a = a->next;
 		free(temp);
-		temp = a;
 	}
 }
+
+// void	ft_free_a(t_list *a)
+// {
+// 	t_list	*temp;
+
+// 	temp = a;
+// 	while (!a)
+// 	{
+// 		a = a->next;
+// 		free(temp);
+// 		temp = a;
+// 	}
+// }
 
 t_list	*ft_new_list(int num, int index)
 {

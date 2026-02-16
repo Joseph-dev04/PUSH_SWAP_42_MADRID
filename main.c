@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:31:38 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/13 10:06:08 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/16 18:55:46 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,3 +80,9 @@ int	main(int arc, char **argv)
 	printf("%i\n", contador);
     return (0);
 }
+
+
+
+// comprueba ./a.out --complex 10 6 -88888 -8 -1 -4 -2147447 +1
+
+//el primer numero no lo ordena
