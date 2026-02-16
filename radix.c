@@ -52,6 +52,6 @@ void	ft_orden_bits(t_list **a, t_list **b, int size)
 
 void	ft_radix(t_list **a, t_list **b, int size)
 {
-	ft_quicksort(a, b);
+	ft_quicksort(a);
 	ft_orden_bits(a, b, size);
 }

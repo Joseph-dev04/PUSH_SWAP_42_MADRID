@@ -74,7 +74,7 @@ void	ft_logic(int **list, int inicio, int final)
 		ft_logic(list, i, final);
 }
 
-void	*ft_quicksort(t_list **a, t_list **b)
+void	*ft_quicksort(t_list **a)
 {
 	t_list	*temp;
 	int		i;

@@ -15,7 +15,7 @@
 
 int contador = 0;
 
-int	charge_num(char **argv, int arc, t_list **a, t_list **b, int i)
+int	charge_num(char **argv, int arc, t_list **a, int i)
 {
 	int	size;
 
@@ -33,17 +33,17 @@ void	ft_type_algoritm(char **argv, int arc, t_list **a, t_list **b)
 {
 	if (ft_strnstr(argv[1], "--simple", ft_strlen(argv[1])))
 	{
-		if (!charge_num(argv, arc, a, b, 2))
+		if (!charge_num(argv, arc, a, 2))
 			simple_extraccion(a,b);
 	}
 	else if (ft_strnstr(argv[1], "--medium", ft_strlen(argv[1])))
 	{
-		if (!charge_num(argv, arc, a, b, 2))
+		if (!charge_num(argv, arc, a, 2))
 			medium_extraccion(a, b);
 	}
 	else if (ft_strnstr(argv[1], "--complex", ft_strlen(argv[1])))
 	{
-		if (!charge_num(argv, arc, a, b, 2))
+		if (!charge_num(argv, arc, a, 2))
 			ft_radix(a, b, ft_size_lis(*a));
 	}
 	/*else if (ft_strnstr(argv[1], "--adaptive", ft_strlen(argv[1])))
@@ -62,8 +62,6 @@ int	main(int arc, char **argv)
 {
 	t_list	*a;
 	t_list	*b;
-	int		i;
-	int		size;
 
 	a = NULL;
 	b = NULL;

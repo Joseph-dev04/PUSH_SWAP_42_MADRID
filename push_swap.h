@@ -51,11 +51,10 @@ void	ft_rrb(t_list **b);
 void	ft_rra(t_list **a);
 void	ft_rrr(t_list **a, t_list **b);
 
-static int comprobar_duplicados(t_list **a);
 float compute_disorder(t_list *stack_a);
 
 void	ft_radix(t_list **a, t_list **b, int size);
-void	*ft_quicksort(t_list **a, t_list **b);
+void	*ft_quicksort(t_list **a);
 int	num_len(int nb);
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t n);
