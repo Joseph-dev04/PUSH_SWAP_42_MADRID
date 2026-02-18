@@ -6,22 +6,22 @@
 /*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:31:38 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/17 18:07:31 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/18 19:08:20 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-int contador = 0;
+// int contador = 0;
 
-int	charge_num(char **argv, int arc, t_list **a, int i)
+int	charge_num(char **argv, int arc, t_principal **principal, int i)
 {
 	int	size;
 
 	while (i < arc)
 	{
-		size = ft_get_num(argv[i], a);
+		size = ft_get_num(argv[i], &(*principal)->a);
 		if (size == -1)
 			return (1);
 		i++; 
@@ -29,24 +29,25 @@ int	charge_num(char **argv, int arc, t_list **a, int i)
 	return (0);
 }
 
-void	ft_type_algoritm(char **argv, int arc, t_list **a, t_list **b)
+void	ft_type_algoritm(char **argv, int arc, t_principal **principal)
 {
+
 	if (ft_strnstr(argv[1], "--simple", ft_strlen(argv[1])))
 	{
-		if (!charge_num(argv, arc, a, 2))
-			simple_extraccion(a,b);
+		if (!charge_num(argv, arc, principal, 2))
+			simple_extraccion(principal);
 	}
 	else if (ft_strnstr(argv[1], "--medium", ft_strlen(argv[1])))
 	{
-		if (!charge_num(argv, arc, a, 2))
-			medium_extraccion(a, b);
+		if (!charge_num(argv, arc, principal, 2))
+			medium_extraccion(principal);
 	}
 	else if (ft_strnstr(argv[1], "--complex", ft_strlen(argv[1])))
 	{
-		if (!charge_num(argv, arc, a, 2))
-			ft_radix(a, b, ft_size_lis(*a));
+		if (!charge_num(argv, arc, principal, 2))
+			ft_radix(principal, ft_size_lis((*principal)->a));
 	}
-	/*else if (ft_strnstr(argv[1], "--adaptive", ft_strlen(argv[1])))
+	/*else (ft_strnstr(argv[1], "--adaptive", ft_strlen(argv[1])))
 	{
 		if (!charge_num(argv, arc, a, b, 2))
 			return ;
@@ -58,26 +59,59 @@ void	ft_type_algoritm(char **argv, int arc, t_list **a, t_list **b)
 	}*/
 }
 
+void	ft_struct(t_principal **principal)
+{
+	*principal = malloc(sizeof(t_principal));
+	if (!*principal)
+		return ;
+	(*principal)->bench = malloc(sizeof(t_stats));
+    if (!(*principal)->bench)
+    {
+        free(*principal);
+        *principal = NULL;
+        return ;
+    }
+	// (*principal)->bench = NULL;
+	(*principal)->bench->pa_count = 0;
+	(*principal)->bench->pb_count = 0;
+	(*principal)->bench->ra_count = 0;
+	(*principal)->bench->rb_count = 0;
+	(*principal)->bench->rr_count = 0;
+	(*principal)->bench->rra_count = 0;
+	(*principal)->bench->rrb_count = 0;
+	(*principal)->bench->rrr_count = 0;
+	(*principal)->bench->sa_count = 0;
+	(*principal)->bench->sb_count = 0;
+	(*principal)->bench->ss_count = 0;
+	(*principal)->bench->total_count = 0;
+	(*principal)->bench->sizea = 0;
+	(*principal)->a = NULL;
+	(*principal)->b = NULL;
+}
+
 int	main(int arc, char **argv)
 {
-	t_list	*a;
-	t_list	*b;
+	// t_list	*a;
+	// t_list	*b;
+	t_principal *principal;
+	principal = NULL;
+	ft_struct(&principal);
 
-	a = NULL;
-	b = NULL;
+	
 	if (arc > 1)
 	{
-		ft_type_algoritm(argv, arc, &a, &b);
+		ft_type_algoritm(argv, arc, &principal);
         // printf("índice de desorden: %f\n", compute_disorder(a));
-        b = a;
-        while (b)
+        principal->b = principal->a;
+        while (principal->b)
         {
-			printf("value :%i index: %i\n", b->value, b->index);
-            b = b->next;
+			printf("%i ", principal->b->value);
+			// printf("value :%i index: %i", b->value, b->index);
+            principal->b = principal->b->next;
         }
-		ft_free_a(a);
+		ft_free_a(principal->a);
     }
-	printf("%i\n", contador);
+	// printf("\ncontador:%i", contador);
     return (0);
 }
 

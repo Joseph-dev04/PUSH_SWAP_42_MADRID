@@ -12,7 +12,53 @@
 
 #include "push_swap.h"
 
-void simple_extraccion(t_list **a, t_list **b)
+static void simple_extraccion_pequena(t_principal **principal)
+{
+	int		first;
+	int		second;
+	int 	third;
+	int		size;
+
+	printf("ha entrado en pequeño\n");
+
+	size = ft_size_lis((*principal)->a);
+
+	if (size <= 1)
+		return;
+
+	if (size == 2)
+	{
+		if ((*principal)->a->value > (*principal)->a->next->value)
+			ft_sa(principal, 0);
+		return;
+	}
+
+	if (size == 3)
+	{
+		first = (*principal)->a->value;
+		second = (*principal)->a->next->value;
+		third = (*principal)->a->next->next->value;
+
+		if (first > second && second > third)
+		{
+			ft_ra(principal, 0);
+			if ((*principal)->a->value > (*principal)->a->next->value)
+				ft_sa(principal, 0);
+
+		}
+		else if (second > first && second > third)
+		{
+			ft_rra(principal, 0);
+			if ((*principal)->a->value > (*principal)->a->next->value)
+				ft_sa(principal, 0);
+		}
+		else if (first > second)
+			ft_sa(principal, 0);
+	}
+}
+
+
+static void simple_extraccion_grande(t_principal **principal)
 {
 	t_list	*nodo_min;
 	t_list	*tmp;
@@ -20,10 +66,11 @@ void simple_extraccion(t_list **a, t_list **b)
 	int		pos;
 	int		min_pos;
 
-	while (*a)
+	printf("ha entrado en grande\n");
+	while ((*principal)->a)
 	{
-		nodo_min = *a;
-		tmp = (*a)->next;
+		nodo_min = (*principal)->a;
+		tmp = (*principal)->a->next;
 		pos = 1;
 		min_pos = 0;
 
@@ -38,23 +85,138 @@ void simple_extraccion(t_list **a, t_list **b)
 			tmp = tmp->next;
 		}
 
-		size = ft_size_lis(*a);
+		size = ft_size_lis((*principal)->a);
 
 		if (min_pos <= size / 2)
 		{
-			while (*a != nodo_min)
-				ft_ra(a);
+			while ((*principal)->a != nodo_min)
+				ft_ra(principal, 0);
 		}
 		else
 		{
-			while (*a != nodo_min)
-				ft_rra(a);
+			while ((*principal)->a != nodo_min)
+				ft_rra(principal, 0);
 		}
 
-		ft_pb(a, b);
+		ft_pb(principal, 0);
 	}
 
-	while (*b)
-		ft_pa(a, b);
+	while ((*principal)->b)
+		ft_pa(principal, 0);
 }
 
+void simple_extraccion(t_principal **principal)
+{
+	int size = ft_size_lis((*principal)->a);
+	printf("Tamaño de la lista: %d\n", size);
+	if (size <= 3)
+		simple_extraccion_pequena(principal);
+	else
+		simple_extraccion_grande(principal);
+}
+
+
+
+/*
+void simple_extraccion(t_principal **principal)
+{
+	t_list	*nodo_min;
+	t_list	*tmp;
+	int		size;
+	int		pos;
+	int		min_pos;
+
+
+
+	while ((*principal)->a)
+	{
+		nodo_min = (*principal)->a;
+		tmp = (*principal)->a->next;
+		pos = 1;
+		min_pos = 0;
+
+		while (tmp)
+		{
+			if (tmp->value < nodo_min->value)
+			{
+				nodo_min = tmp;
+				min_pos = pos;
+			}
+			pos++;
+			tmp = tmp->next;
+		}
+
+		size = ft_size_lis((*principal)->a);
+
+		if (min_pos <= size / 2)
+		{
+			while ((*principal)->a != nodo_min)
+				ft_ra(principal, 0);
+		}
+		else
+		{
+			while ((*principal)->a != nodo_min)
+				ft_rra(principal, 0);
+		}
+
+		ft_pb(principal, 0);
+	}
+
+	while ((*principal)->b)
+		ft_pa(principal, 0);
+}
+*/
+
+/*
+
+
+#include "push_swap.h"
+
+void simple_extraccion(t_principal **principal)
+{
+	t_list	*nodo_min;
+	t_list	*tmp;
+	int		size;
+	int		pos;
+	int		min_pos;
+
+	while ((*principal)->a)
+	{
+		nodo_min = (*principal)->a;
+		tmp = (*principal)->a->next;
+		pos = 1;
+		min_pos = 0;
+
+		while (tmp)
+		{
+			if (tmp->value < nodo_min->value)
+			{
+				nodo_min = tmp;
+				min_pos = pos;
+			}
+			pos++;
+			tmp = tmp->next;
+		}
+
+		size = ft_size_lis((*principal)->a);
+
+		if (min_pos <= size / 2)
+		{
+			while ((*principal)->a != nodo_min)
+				ft_ra(&(*principal)->a);
+		}
+		else
+		{
+			while ((*principal)->a != nodo_min)
+				ft_rra(&(*principal)->a);
+		}
+
+		ft_pb(&(*principal)->a, &(*principal)->b);
+	}
+
+	while ((*principal)->b)
+		ft_pa(&(*principal)->a, &(*principal)->b);
+}
+
+
+*/
