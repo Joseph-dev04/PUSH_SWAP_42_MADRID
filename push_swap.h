@@ -86,4 +86,8 @@ int		ft_size_lis(t_list *a);
 
 void 	simple_extraccion(t_principal **principal);
 void 	medium_extraccion(t_principal **principal);
+
+int	ft_brench_status(int arc, char **argv, int *position);
+int	ft_module_status(int arc, char **argv, int *position);
+void    ft_adaptative(t_principal **principal);
 #endif

@@ -15,48 +15,52 @@
 
 // int contador = 0;
 
-int	charge_num(char **argv, int arc, t_principal **principal, int i)
+int	charge_num(char **argv, int arc, t_principal **principal, int flag)
 {
 	int	size;
+	int	i;
 
+	i = 1;
+	//printf("%i\n",arc);
 	while (i < arc)
 	{
-		size = ft_get_num(argv[i], &(*principal)->a);
-		if (size == -1)
-			return (1);
+		if (ft_strnstr(argv[i], "--bench", ft_strlen(argv[flag])))
+			i++;
+		if (i != flag && i < arc)
+		{
+			//printf("entro %i\n", i);
+			size = ft_get_num(argv[i], &(*principal)->a);
+			if (size == -1)
+				return (1);
+		}
 		i++; 
 	}
 	return (0);
 }
 
-void	ft_type_algoritm(char **argv, int arc, t_principal **principal)
+void	ft_type_algoritm(char **argv, int arc, t_principal **principal, int flag)
 {
 
-	if (ft_strnstr(argv[1], "--simple", ft_strlen(argv[1])))
+	if (ft_strnstr(argv[flag], "--simple", ft_strlen(argv[flag])))
 	{
-		if (!charge_num(argv, arc, principal, 2))
+		if (!charge_num(argv, arc, principal, flag))
 			simple_extraccion(principal);
 	}
-	else if (ft_strnstr(argv[1], "--medium", ft_strlen(argv[1])))
+	else if (ft_strnstr(argv[flag], "--medium", ft_strlen(argv[flag])))
 	{
-		if (!charge_num(argv, arc, principal, 2))
+		if (!charge_num(argv, arc, principal, flag))
 			medium_extraccion(principal);
 	}
-	else if (ft_strnstr(argv[1], "--complex", ft_strlen(argv[1])))
+	else if (ft_strnstr(argv[flag], "--complex", ft_strlen(argv[flag])))
 	{
-		if (!charge_num(argv, arc, principal, 2))
+		if (!charge_num(argv, arc, principal, flag))
 			ft_radix(principal, ft_size_lis((*principal)->a));
-	}
-	/*else (ft_strnstr(argv[1], "--adaptive", ft_strlen(argv[1])))
-	{
-		if (!charge_num(argv, arc, a, b, 2))
-			return ;
 	}
 	else
 	{
-		if (!charge_num(argv, arc, a, b, 2))
-		return ;
-	}*/
+		if (!charge_num(argv, arc, principal, flag))
+			ft_adaptative(principal);
+	}
 }
 
 void	ft_struct(t_principal **principal)
@@ -93,20 +97,24 @@ int	main(int arc, char **argv)
 {
 	// t_list	*a;
 	// t_list	*b;
+	int	bench;
+	int	flag;
 	t_principal *principal;
-	principal = NULL;
-	ft_struct(&principal);
 
-	
+	principal = NULL;
+	bench = 0;
+	flag = 0;
+	ft_struct(&principal);
 	if (arc > 1)
 	{
-		ft_type_algoritm(argv, arc, &principal);
-        // printf("índice de desorden: %f\n", compute_disorder(a));
+		if (ft_brench_status(arc, argv, &bench) > 1 || ft_module_status(arc, argv, &flag) > 1)
+			return (ft_error());
+		//printf("%i %i\n", flag, bench);
+		ft_type_algoritm(argv, arc, &principal, flag);
         principal->b = principal->a;
         while (principal->b)
         {
 			printf("%i ", principal->b->value);
-			// printf("value :%i index: %i", b->value, b->index);
             principal->b = principal->b->next;
         }
 		ft_free_a(principal->a);

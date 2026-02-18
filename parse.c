@@ -13,6 +13,53 @@
 #include "push_swap.h"
 #include <stdio.h>
 
+int	ft_brench_status(int arc, char **argv, int *position)
+{
+	int i;
+	int	bench;
+
+	i = 1;
+	bench = 0;
+	while (i < arc)
+	{
+		if (ft_strnstr(argv[i], "--bench", ft_strlen(argv[i])))
+		{
+			*position = i;
+			bench++;
+		}
+		i++;
+	}
+	return (bench);
+}
+
+int	ft_module_status(int arc, char **argv, int *position)
+{
+	int i;
+	int	flags;
+
+	i = 1;
+	flags = 0;
+	while (i < arc)
+	{
+		if (ft_strnstr(argv[i], "--simple", 8))
+		{
+			*position = i;
+			flags++;
+		}
+		if (ft_strnstr(argv[i], "--medium", 8))
+		{
+			*position = i;
+			flags++;
+		}
+		if (ft_strnstr(argv[i], "--complex", 9))
+		{
+			*position = i;
+			flags++;
+		}
+		i++;
+	}
+	return (flags);
+}
 
 static int	comprobar_duplicados(t_list	**a)
 {
