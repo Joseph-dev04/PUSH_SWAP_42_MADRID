@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:52:24 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/10 12:21:17 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/18 13:56:39 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int	ft_error()
 {
-	write (1, "Error\n", 6);
+	write (2, "Error\n", 6);
 	return (-1);
 }
