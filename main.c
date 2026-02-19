@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:31:38 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/18 19:08:20 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/19 10:00:56 by jopajuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ int	charge_num(char **argv, int arc, t_principal **principal, int flag)
 			if (size == -1)
 				return (1);
 		}
-		i++; 
+		i++;
 	}
 	return (0);
 }
 
-void	ft_type_algoritm(char **argv, int arc, t_principal **principal, int flag)
+void	ft_type(char **argv, int arc, t_principal **principal, int flag)
 {
 
 	if (ft_strnstr(argv[flag], "--simple", ft_strlen(argv[flag])))
@@ -69,12 +69,12 @@ void	ft_struct(t_principal **principal)
 	if (!*principal)
 		return ;
 	(*principal)->bench = malloc(sizeof(t_stats));
-    if (!(*principal)->bench)
-    {
-        free(*principal);
-        *principal = NULL;
-        return ;
-    }
+	if (!(*principal)->bench)
+	{
+		free(*principal);
+		*principal = NULL;
+		return ;
+	}
 	// (*principal)->bench = NULL;
 	(*principal)->bench->pa_count = 0;
 	(*principal)->bench->pb_count = 0;
@@ -107,14 +107,15 @@ int	main(int arc, char **argv)
 	ft_struct(&principal);
 	if (arc > 1)
 	{
-		if (ft_brench_status(arc, argv, &bench) > 1 || ft_module_status(arc, argv, &flag) > 1)
+		if (ft_brench_status(arc, argv, &bench) > 1
+			|| ft_module_status(arc, argv, &flag) > 1)
 			return (ft_error());
 		//printf("%i %i\n", flag, bench);
-		ft_type_algoritm(argv, arc, &principal, flag);
+		ft_type(argv, arc, &principal, flag);
         principal->b = principal->a;
         while (principal->b)
         {
-			printf("%i ", principal->b->value);
+			//printf("%i ", principal->b->value);
             principal->b = principal->b->next;
         }
 		ft_free_a(principal->a);

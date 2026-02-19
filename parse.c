@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:36:21 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/16 18:51:49 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/19 09:41:13 by jopajuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_brench_status(int arc, char **argv, int *position)
 
 int	ft_module_status(int arc, char **argv, int *position)
 {
-	int i;
+	int	i;
 	int	flags;
 
 	i = 1;
@@ -52,6 +52,11 @@ int	ft_module_status(int arc, char **argv, int *position)
 			flags++;
 		}
 		if (ft_strnstr(argv[i], "--complex", 9))
+		{
+			*position = i;
+			flags++;
+		}
+		if (ft_strnstr(argv[i], "--adaptative", 13))
 		{
 			*position = i;
 			flags++;
