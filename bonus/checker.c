@@ -41,6 +41,28 @@ void	ft_execute(char *line, t_checker **bonus)
 	ft_check_rreverse(line, bonus);
 }
 
+int	ft_orden(t_checker *bonus)
+{
+	t_list *temp;
+	int num;
+
+	if (ft_size_lis(bonus->a) == 1)
+		return (1);
+	else
+	{
+		temp = bonus->a;
+		num = temp->value;
+		while (temp->next)
+		{
+			if (num > temp->next->value)
+				return (0);
+			temp = temp->next;
+			num = temp->value;
+		}
+	}
+	return (1);
+}
+
 int	main(int arc, char **argv)
 {
 	t_checker	*bonus;
@@ -59,8 +81,10 @@ int	main(int arc, char **argv)
 			free(line);
 			line = get_next_line(1);
 		}
-		if (ft_orden())
+		if (ft_orden(bonus))
 			return (write(1, "OK\n", 3));
+		else
+			return (write(1, "KO\n", 3));
 	}
 	return (ft_error());
 }
