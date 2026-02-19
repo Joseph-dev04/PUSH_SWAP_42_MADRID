@@ -4,7 +4,7 @@
 NAME = push_swap
 
 SRC = error.c intermedio.c main.c parse.c push.c quicksort.c radix_utils.c radix.c reverse_reverse.c reverse.c simple.c struct_utils.c swap.c utils.c\
-		 adaptative.c
+		 adaptative.c intermedio_utils.c benchmark.c
 
 CC = cc
 

@@ -1,18 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   intermedio.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/19 15:11:53 by aitorres          #+#    #+#             */
+/*   Updated: 2026/02/19 17:14:16 by aitorres         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "push_swap.h"
-
-static void	ft_reset_index(t_list **a)
-{
-	t_list	*nodo_a;
-
-	nodo_a = *a;
-	while (nodo_a)
-	{
-		nodo_a->index = -1;
-		nodo_a = nodo_a->next;
-	}
-}
-
-
 
 static int	raiz_size(int size)
 {
@@ -125,6 +124,18 @@ static void	pasar_b_a(t_principal **principal)
 
 void medium_extraccion(t_principal **principal)
 {
+	int size;
+
+	if (!principal || !*principal || !(*principal)->a)
+	{
+		return ;
+	}
+	size = ft_size_lis((*principal)->a);
+	if (size <= 3)
+	{
+		simple_extraccion(principal);
+		return ;
+	}
 
 	ft_reset_index(&(*principal)->a);
 	index_mayor_a_menor(&(*principal)->a);

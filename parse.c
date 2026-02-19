@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:36:21 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/19 09:41:13 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/19 18:10:52 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,10 +205,10 @@ int	ft_get_num(char *list_num, t_list **a)
 
 float compute_disorder(t_list *stack_a)
 {
-	int		mistakes;
-	int		total_pairs;
-	t_list	*n_nodo_a;
-	t_list	*n_nodo_b;
+	long long		mistakes;
+	long long		total_pairs;
+	t_list			*n_nodo_a;
+	t_list			*n_nodo_b;
 
 	
 	mistakes = 0;
@@ -230,4 +230,5 @@ float compute_disorder(t_list *stack_a)
 	if (total_pairs == 0)
 		return (0.0);
 	return ((float)mistakes / (float)total_pairs);
+	// return (float)((double)mistakes / (double)total_pairs);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:29:24 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/19 12:04:16 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/19 17:41:57 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <fcntl.h> //para fd
 
 typedef struct s_list
 {
@@ -96,4 +97,11 @@ void	medium_extraccion(t_principal **principal);
 int		ft_brench_status(int arc, char **argv, int *position);
 int		ft_module_status(int arc, char **argv, int *position);
 void	ft_adaptative(t_principal **principal);
+
+//--medium
+void	ft_reset_index(t_list **a);
+
+//--medium && --simple
+void simple_extraccion_pequena(t_principal **principal);
+
 #endif

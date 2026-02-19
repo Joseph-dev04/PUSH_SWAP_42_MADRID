@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static void simple_extraccion_pequena(t_principal **principal)
+void simple_extraccion_pequena(t_principal **principal)
 {
 	int		first;
 	int		second;
