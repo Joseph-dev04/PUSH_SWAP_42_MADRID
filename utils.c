@@ -6,7 +6,7 @@
 /*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 10:10:21 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/13 10:00:52 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/20 13:21:32 by jopajuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,10 +88,10 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
 			while (needle[j] && (i + j) < n)
 			{
 				if (needle[j] != haystack[i + j])
-					break ;
+					return (NULL);
 				j++;
 			}
-			if (!needle[j])
+			if (needle[j] == haystack[j])
 				return ((char *)haystack + i);
 		}
 		i++;
