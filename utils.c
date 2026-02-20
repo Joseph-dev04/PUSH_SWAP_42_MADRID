@@ -6,7 +6,7 @@
 /*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 10:10:21 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/20 13:21:32 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/20 13:43:57 by jopajuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	str[start] = '\0';
 	return (str);
 }
+
 int	ft_atoi(const char *str)
 {
 	int	i;

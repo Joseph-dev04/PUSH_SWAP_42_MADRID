@@ -6,7 +6,7 @@
 /*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 15:11:53 by aitorres          #+#    #+#             */
-/*   Updated: 2026/02/20 12:29:07 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/20 13:55:53 by jopajuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static int	raiz_size(int size)
 	return (i- 1);
 }
 
-//Recorremos la lista poniendo un index 0 siendo el número mayor;
 static void index_mayor_a_menor(t_list **a)
 {
 	t_list	*nodo_a;
@@ -75,7 +74,7 @@ static void	semi_colocacion_b(t_principal **principal)
 		{
 			ft_pb(principal, 0);
 			if (ft_size_lis((*principal)->b) > 1)
-				ft_rb(principal, 0);     // Empujamos los mas pequeños al fondo por arriba, que se jodan ajajja
+				ft_rb(principal, 0);
 			i++;
 		}
 		else if ((*principal)->a->index <= i + r_size)
@@ -101,11 +100,11 @@ static void	pasar_b_a(t_principal **principal)
 	{
 		nodo_b = (*principal)->b;
 		count = 0;
-		while (nodo_b && nodo_b->index != i)		//probar (nodo_b->index != i && nodo_b)
+		while (nodo_b && nodo_b->index != i)
 		{
 			nodo_b = nodo_b->next;
 			count++;
-		}	
+		}
 		if (count <= ft_size_lis((*principal)->b) / 2)
 		{
 			while ((*principal)->b->index != i)

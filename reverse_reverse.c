@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_reverse.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 09:54:11 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/18 18:31:50 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/20 13:49:57 by jopajuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	ft_rrr(t_principal **principal)
 	ft_rrb(principal, 1);
 	write (1, "rrr\n", 4);
 	if ((*principal)->bench)
-		{
-			(*principal)->bench->rrr_count++;
-			(*principal)->bench->total_count++;
-		}
+	{
+		(*principal)->bench->rrr_count++;
+		(*principal)->bench->total_count++;
+	}
 }
 
 void	ft_rra(t_principal **principal, int count_bench)
@@ -48,7 +48,6 @@ void	ft_rra(t_principal **principal, int count_bench)
 		(*principal)->bench->total_count++;
 		return ;
 	}
-	
 }
 
 void	ft_rrb(t_principal **principal, int count_bench)
@@ -75,58 +74,3 @@ void	ft_rrb(t_principal **principal, int count_bench)
 		return ;
 	}
 }
-
-/*
-#include "push_swap.h"
-
-extern int contador;
-void	ft_rra(t_principal **principal, int count_bech)
-{
-	t_list	*first;
-	t_list	*plast;
-	t_list	*last;
-
-	if (!*a || !(*a)->next)
-		return ;
-	first = *a;
-	plast = *a;
-	while (plast->next->next)
-		plast = plast->next;
-	last = plast->next;
-	plast->next = NULL;
-	last->next = first;
-	*a = last;
-	contador++;
-	write (1, "rra\n", 4);
-}
-
-void	ft_rrb(t_list **b)
-{
-	t_list	*first;
-	t_list	*plast;
-	t_list	*last;
-
-	if (!*b || !(*b)->next)
-		return ;
-	first = *b;
-	plast = *b;
-	while (plast->next->next)
-		plast = plast->next;
-	last = plast->next;
-	plast->next = NULL;
-	last->next = first;
-	*b = last;
-	contador++;
-	write (1, "rrb\n", 4);
-}
-
-void	ft_rrr(t_list **a, t_list **b)
-{
-	ft_rra(a);
-	ft_rrb(b);
-	contador++;
-	write (1, "rrr\n", 4);
-}
-
-
-*/

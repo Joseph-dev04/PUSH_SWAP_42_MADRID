@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:36:21 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/19 18:10:52 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/20 13:53:26 by jopajuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static int	comprobar_duplicados(t_list	**a)
 		move = n->next;
 		while (move)
 		{
-			if(n->value == move->value)
+			if (n->value == move->value)
 				return (0);
 			move = move->next;
 		}
@@ -86,26 +86,6 @@ static int	comprobar_duplicados(t_list	**a)
 	return (1);
 }
 
-/*
-void	ft_itoa_pro(char *str, t_list **a, int index, int *i)
-{
-	int		j;
-	char	*num;
-	t_list	*new;
-
-	j = 0;
-	//printf("en itoa %s\n", str);
-	while (ft_isdigit(str[j]) || (str[j] == '-'))
-		j++;
-	num = ft_substr(str, 0, j);
-	*i += j;
-	new = ft_new_list(ft_atoi(num), index);
-	free(num);
-	ft_add_back(a, new);
-}*/
-
-
-
 int	ft_itoa_pro(char *str, t_list **a, int index, int *i)
 {
 	int		j;
@@ -113,7 +93,6 @@ int	ft_itoa_pro(char *str, t_list **a, int index, int *i)
 	t_list	*new;
 
 	j = 0;
-	//printf("en itoa %s\n", str);
 	if (str[j] == '-' || str[j] == '+')
 		j++;
 	if (!ft_isdigit(str[j]))
@@ -141,22 +120,12 @@ int	ft_get_num(char *list_num, t_list **a)
 			i++;
 
 		if (list_num[i] == '\0')
-			break;
-		
+			break ;
 		if (list_num[i] >= '\t' && list_num[i] <= '\r')
 			return (ft_error());
-		
-		// if ((list_num[i] != ' ' && !ft_isdigit(list_num[i])) && list_num[i] != '-' && list_num[i] != '+')
-		// 	return (ft_error());
-			
-		// if ((list_num[i] == '-' || list_num[i] == '+') && !ft_isdigit(list_num[i + 1]))
-		// 	return (ft_error());
-
-			
 		if (ft_isdigit(list_num[i]) ||
 			(((list_num[i] == '-' || list_num[i] == '+') && ft_isdigit(list_num[i + 1]))))
 		{
-			
 			if (ft_itoa_pro(&list_num[i], a, 0, &i) == -1)
 				return (ft_error());
 			if (list_num[i] && list_num[i] != ' ')
@@ -165,52 +134,18 @@ int	ft_get_num(char *list_num, t_list **a)
 		else
 			return (ft_error());
 	}
-
-	
 	if (comprobar_duplicados(a) == 0)
 		return (ft_error());
 	return (0);
 }
 
-/*
-int	ft_get_num(char *list_num, t_list **a)
-{
-	int		i_comi;
-	int	i;
-
-	i = 0;
-	i_comi = 0;
-	while (list_num[i])
-	{
-		if (list_num[i] == '-' && !ft_isdigit(list_num[i + 1]))
-			return (ft_error());
-		else if ((list_num[i] != ' ' && !ft_isdigit(list_num[i])) && list_num[i] != '-')
-			return (ft_error());
-		else if (list_num[i] >= '\t' && list_num[i] <= '\r')
-			return (ft_error());
-		else if (list_num[i] == ' ')
-			i++;
-		if (ft_isdigit(list_num[i]) || (list_num[i] == '-' && ft_isdigit(list_num[i + 1])))
-			ft_itoa_pro(&list_num[i], a, 0, &i);
-		else if (!(list_num[i] == '-' && ft_isdigit(list_num[i + 1])))
-			return (ft_error());
-		if (list_num[i])
-			i++;
-	}
-	if (comprobar_duplicados(a) == 0)
-		return (ft_error());
-	return (0);
-}
-*/
-
-float compute_disorder(t_list *stack_a)
+float	compute_disorder(t_list *stack_a)
 {
 	long long		mistakes;
 	long long		total_pairs;
 	t_list			*n_nodo_a;
 	t_list			*n_nodo_b;
 
-	
 	mistakes = 0;
 	total_pairs = 0;
 	n_nodo_a = stack_a;
@@ -230,5 +165,4 @@ float compute_disorder(t_list *stack_a)
 	if (total_pairs == 0)
 		return (0.0);
 	return ((float)mistakes / (float)total_pairs);
-	// return (float)((double)mistakes / (double)total_pairs);
 }

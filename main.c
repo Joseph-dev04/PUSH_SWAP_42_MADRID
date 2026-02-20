@@ -6,14 +6,12 @@
 /*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:31:38 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/20 12:42:45 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/20 14:42:03 by jopajuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
-
-// int contador = 0;
 
 int	charge_num(char **argv, int arc, t_principal **principal, int flag)
 {
@@ -21,14 +19,12 @@ int	charge_num(char **argv, int arc, t_principal **principal, int flag)
 	int	i;
 
 	i = 1;
-	//printf("%i\n",arc);
 	while (i < arc)
 	{
 		if (ft_strnstr(argv[i], "--bench", ft_strlen(argv[flag])))
 			i++;
 		if (i != flag && i < arc)
 		{
-			//printf("entro %i\n", i);
 			size = ft_get_num(argv[i], &(*principal)->a);
 			if (size == -1)
 				return (1);
@@ -97,11 +93,9 @@ void	ft_struct(t_principal **principal)
 
 int	main(int arc, char **argv)
 {
-	// t_list	*a;
-	// t_list	*b;
-	int	bench;
-	int	flag;
-	t_principal *principal;
+	int			bench;
+	int			flag;
+	t_principal	*principal;
 
 	principal = NULL;
 	bench = 0;
@@ -112,63 +106,11 @@ int	main(int arc, char **argv)
 		if (ft_brench_status(arc, argv, &bench) > 1
 			|| ft_module_status(arc, argv, &flag) > 1)
 			return (ft_error());
-		//printf("%i %i\n", flag, bench);
 		ft_type(argv, arc, &principal, flag);
-        principal->b = principal->a;
-        while (principal->b)
-        {
-			//printf("%i ", principal->b->value);
-            principal->b = principal->b->next;
-        }
+		principal->b = principal->a;
+		while (principal->b)
+			principal->b = principal->b->next;
 		ft_free_a(principal->a);
-    }
-	// printf("\ncontador:%i", contador);
-    return (0);
-}
-
-
-/*CON ESTE MAIN FUNCIONA PPRQUE PRIMER AGREGA CALCULA EL DESORDEN Y LUEGO YA ASIGNA, PPEEEERO NO VALE PARA NUESTRO CÓDIGO*/
-/* int	main(int arc, char **argv)
-{
-	t_list	*a;
-	t_list	*b;
-
-	a = NULL;
-	b = NULL;
-	if (arc > 1)
-	{
-		// 1. Cargar los números en el stack 'a' (sin ordenar)
-		if (charge_num(argv, arc, &a, 2) != 0)
-		{
-			ft_free_a(a);
-			return (1); // Error en carga
-		}
-
-		// 2. Calcular y mostrar el índice de desorden ANTES de ordenar
-		printf("índice de desorden: %f\n", compute_disorder(a));
-
-		// 3. Ejecutar el algoritmo de ordenación según argv[1]
-		if (ft_strnstr(argv[1], "--simple", ft_strlen(argv[1])))
-			simple_extraccion(&a, &b);
-		else if (ft_strnstr(argv[1], "--medium", ft_strlen(argv[1])))
-			medium_extraccion(&a, &b);
-		else if (ft_strnstr(argv[1], "--complex", ft_strlen(argv[1])))
-			ft_radix(&a, &b, ft_size_lis(a));
-
-		// 4. Imprimir valores finales (opcional)
-		t_list *temp = a;
-		while (temp)
-		{
-			printf("value :%i index: %i\n", temp->value, temp->index);
-			temp = temp->next;
-		}
-
-		ft_free_a(a);
 	}
-	printf("%i\n", contador);
 	return (0);
-} */
-
-// comprueba ./a.out --complex 10 6 -88888 -8 -1 -4 -2147447 +1
-
-//el primer numero no lo ordena
+}

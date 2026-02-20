@@ -6,7 +6,7 @@
 /*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 09:51:37 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/13 11:13:39 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/20 13:51:25 by jopajuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ void	ft_index_num(t_list *a, int *list, int i, int j)
 
 	if (i > j)
 		return ;
-	num =  (i + j) / 2;
+	num = (i + j) / 2;
 	if (list[num] == a->value)
 	{
 		a->index = num;
 		return ;
 	}
-	else if (a->value <  list[num])
+	else if (a->value < list[num])
 		ft_index_num(a, list, i, num - 1);
 	else
 		ft_index_num(a, list, num + 1, j);
@@ -38,7 +38,6 @@ void	ft_indexacion(int *list_num, t_list **a, int i, int j)
 	while (temp)
 	{
 		ft_index_num(temp, list_num, i, j);
-		//printf("value :%i index: %i\n", temp->value, temp->index);
 		temp = temp->next;
 	}
 }
@@ -78,7 +77,8 @@ void	*ft_quicksort(t_list **a)
 {
 	t_list	*temp;
 	int		i;
-	int	*list_num;
+	int		*list_num;
+
 	i = 0;
 	list_num = malloc(sizeof(int) * ft_size_lis(*a));
 	if (!list_num)

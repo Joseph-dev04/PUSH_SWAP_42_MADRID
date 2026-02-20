@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   struct_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:39:22 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/18 15:56:59 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/20 13:46:48 by jopajuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void ft_add_back(t_list **lst, t_list *new)
+void	ft_add_back(t_list **lst, t_list *new)
 {
 	t_list	*last;
 
@@ -66,19 +66,6 @@ void	ft_free_a(t_list *a)
 		free(temp);
 	}
 }
-
-// void	ft_free_a(t_list *a)
-// {
-// 	t_list	*temp;
-
-// 	temp = a;
-// 	while (!a)
-// 	{
-// 		a = a->next;
-// 		free(temp);
-// 		temp = a;
-// 	}
-// }
 
 t_list	*ft_new_list(int num, int index)
 {
