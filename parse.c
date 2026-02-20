@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:36:21 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/20 15:49:39 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/20 19:21:16 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 int	ft_brench_status(int arc, char **argv, int *position)
 {
@@ -31,8 +30,59 @@ int	ft_brench_status(int arc, char **argv, int *position)
 	}
 	return (bench);
 }
-
 int	ft_module_status(int arc, char **argv, int *position)
+{
+	int	i;
+	int	flags;
+
+	i = 1;
+	flags = 0;
+	while (i < arc)
+	{
+		if (ft_strnstr(argv[i], "--simple", 8)
+			|| ft_strnstr(argv[i], "--medium", 8)
+			|| ft_strnstr(argv[i], "--complex", 9)
+			|| ft_strnstr(argv[i], "--adaptative", 12))
+		{
+			*position = i;
+			flags++;
+		}
+		i++;
+	}
+	return (flags);
+}
+
+/*
+int	ft_module_status(int arc, char **argv, int *position)
+{
+	int		i;
+	int		j;
+	int		flags;
+	char	*f[4];
+
+	f[0] = "--simple";
+	f[1] = "--medium";
+	f[2] = "--complex";
+	f[3] = "--adaptative";
+	i = 0;
+	flags = 0;
+	while (++i < arc)
+	{
+		j = -1;
+		while (++j < 4)
+		{
+			if (ft_strnstr(argv[i], f[j], 12))
+			{
+				*position = i;
+				flags++;
+			}
+		}
+	}
+	return (flags);
+}
+*/
+
+/* int	ft_module_status(int arc, char **argv, int *position)
 {
 	int	i;
 	int	flags;
@@ -65,7 +115,7 @@ int	ft_module_status(int arc, char **argv, int *position)
 	}
 	return (flags);
 }
-
+ */
 static int	comprobar_duplicados(t_list	**a)
 {
 	t_list	*n;
@@ -118,7 +168,6 @@ int	ft_get_num(char *list_num, t_list **a)
 	{
 		while (list_num[i] == ' ')
 			i++;
-
 		if (list_num[i] == '\0')
 			break ;
 		if (list_num[i] >= '\t' && list_num[i] <= '\r')
@@ -139,59 +188,3 @@ int	ft_get_num(char *list_num, t_list **a)
 	return (0);
 }
 
-float	compute_disorder(t_list *stack_a)
-{
-	long long		mistakes;
-	long long		total_pairs;
-	t_list			*n_nodo_a;
-	t_list			*n_nodo_a_next;
-
-	mistakes = 0;
-	total_pairs = 0;
-	n_nodo_a = stack_a;
-	// n_nodo_a_next = n_nodo_a;
-	while (n_nodo_a != NULL)
-	{
-		n_nodo_a_next = n_nodo_a->next;
-		while (n_nodo_a_next != NULL)
-		{
-			total_pairs++;
-			if (n_nodo_a->value > n_nodo_a_next->value)
-				mistakes++;
-			n_nodo_a_next = n_nodo_a_next->next;
-			// n_nodo_a = n_nodo_a->next;
-		}
-		n_nodo_a = n_nodo_a->next;
-	}
-	if (total_pairs == 0)
-		return (0.0);
-	return ((float)mistakes / (float)total_pairs);
-}
-
-float	compute_disorder(t_list *stack_a)
-{
-	long long		mistakes;
-	long long		total_pairs;
-	t_list			*n_nodo_a;
-	t_list			*n_nodo_a_next;
-
-	mistakes = 0;
-	total_pairs = 0;
-	n_nodo_a = stack_a;
-	// n_nodo_a_next = n_nodo_a;
-	while (n_nodo_a != NULL)
-	{
-		n_nodo_a_next = n_nodo_a->next;
-		while (n_nodo_a_next != NULL)
-		{
-			total_pairs++;
-			if (n_nodo_a->value > n_nodo_a_next->value)
-				mistakes++;
-			n_nodo_a_next = n_nodo_a_next->next;
-		}
-		n_nodo_a = n_nodo_a->next;
-	}
-	if (total_pairs == 0)
-		return (0.0);
-	return ((float)mistakes / (float)total_pairs);
-}

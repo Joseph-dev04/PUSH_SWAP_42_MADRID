@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:29:24 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/20 15:26:00 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/20 19:13:55 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
-# include <fcntl.h> //para fd
+# include <fcntl.h>
 
 typedef struct s_list
 {
@@ -43,6 +43,7 @@ typedef struct s_stats
 	int			medium;
 	int			complex;
 	int			adaptative;
+	float		compute_disorder;
 }	t_stats;
 
 typedef struct s_principal
@@ -51,10 +52,6 @@ typedef struct s_principal
 	struct s_list	*a;
 	struct s_list	*b;
 }	t_principal;
-
-
-
-
 
 int		ft_get_num(char *list_num, t_list **a);
 int		ft_strlen(char *str);
@@ -85,31 +82,27 @@ void	ft_rrr(t_principal **principal);
 
 float	compute_disorder(t_list *stack_a);
 
-void	ft_radix(t_principal **principal, int size);
+void	complex_extraction(t_principal **principal, int size);
 void	*ft_quicksort(t_list **a);
 int		num_len(int nb);
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t n);
 int		ft_size_lis(t_list *a);
 
-void	simple_extraccion(t_principal **principal);
+void	simple_extraction(t_principal **principal);
 void	medium_extraccion(t_principal **principal);
 
 int		ft_brench_status(int arc, char **argv, int *position);
 int		ft_module_status(int arc, char **argv, int *position);
 void	ft_adaptative(t_principal **principal);
 
-//--medium
 void	ft_reset_index(t_list **a);
 
-//--medium && --simple
-void	simple_extraccion_pequena(t_principal **principal);
+void	simple_small_extraction(t_principal **principal);
 
-//--bench
 void	bench_union(t_principal **principal);
 void	ft_putnbr_fd2(int number);
 void	bench_disorder(float disorder_value);
-
 
 
 #endif

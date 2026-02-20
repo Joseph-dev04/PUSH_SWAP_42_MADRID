@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_get_num.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 10:56:14 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/20 12:10:04 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/20 17:25:36 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,6 +196,7 @@ float compute_disorder(t_list *stack_a)
 	}
 	if (total_pairs == 0)
 		return (0.0);
+	printf("%f", ((float)mistakes / (float)total_pairs));
 	return ((float)mistakes / (float)total_pairs);
-	// return (float)((double)mistakes / (double)total_pairs);
+	//return (float)((double)mistakes / (double)total_pairs);
 }

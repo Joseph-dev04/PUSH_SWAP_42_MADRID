@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+         #
+#    By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/20 15:32:45 by jopajuel          #+#    #+#              #
-#    Updated: 2026/02/20 15:35:31 by jopajuel         ###   ########.fr        #
+#    Updated: 2026/02/20 18:45:11 by aitorres         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,24 @@ RED := \033[31m
 
 NAME = push_swap
 
-SRC = error.c intermedio.c main.c parse.c push.c quicksort.c radix_utils.c radix.c reverse_reverse.c reverse.c simple.c struct_utils.c swap.c utils.c\
-		 adaptative.c intermedio_utils.c benchmark.c benchmark_utils.c
+SRC = 	main.c\
+		error.c\
+		parse.c\
+		push.c\
+		quicksort.c\
+		struct_utils.c\
+		simple.c\
+		medium.c\
+		medium_utils.c\
+		complex_utils.c\
+		complex.c\
+		reverse_reverse.c\
+		reverse.c\
+		swap.c\
+		utils.c\
+		adaptative.c\
+		benchmark.c\
+		benchmark_utils.c
 
 CC = cc
 

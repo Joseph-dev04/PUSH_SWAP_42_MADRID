@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:31:38 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/20 14:50:11 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/20 19:03:17 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_type(char **argv, int arc, t_principal **principal, int flag)
 	if (ft_strnstr(argv[flag], "--simple", ft_strlen(argv[flag])))
 	{
 		if (!charge_num(argv, arc, principal, flag))
-			simple_extraccion(principal);
+			simple_extraction(principal);
 	}
 	else if (ft_strnstr(argv[flag], "--medium", ft_strlen(argv[flag])))
 	{
@@ -50,7 +50,7 @@ void	ft_type(char **argv, int arc, t_principal **principal, int flag)
 	else if (ft_strnstr(argv[flag], "--complex", ft_strlen(argv[flag])))
 	{
 		if (!charge_num(argv, arc, principal, flag))
-			ft_radix(principal, ft_size_lis((*principal)->a));
+			complex_extraction(principal, ft_size_lis((*principal)->a));
 	}
 	else
 	{
@@ -59,11 +59,34 @@ void	ft_type(char **argv, int arc, t_principal **principal, int flag)
 	}
 }
 
+static void	init_bench(t_stats **bench)
+{
+	(*bench)->pa_count = 0;
+	(*bench)->pb_count = 0;
+	(*bench)->ra_count = 0;
+	(*bench)->rb_count = 0;
+	(*bench)->rr_count = 0;
+	(*bench)->rra_count = 0;
+	(*bench)->rrb_count = 0;
+	(*bench)->rrr_count = 0;
+	(*bench)->sa_count = 0;
+	(*bench)->sb_count = 0;
+	(*bench)->ss_count = 0;
+	(*bench)->total_count = 0;
+	(*bench)->simple = 0;
+	(*bench)->medium = 0;
+	(*bench)->complex = 0;
+	(*bench)->adaptative = 0;
+	(*bench)->compute_disorder = 0.0f;
+}
+
 void	ft_struct(t_principal **principal)
 {
 	*principal = malloc(sizeof(t_principal));
 	if (!*principal)
 		return ;
+	(*principal)->a = NULL;
+	(*principal)->b = NULL;
 	(*principal)->bench = malloc(sizeof(t_stats));
 	if (!(*principal)->bench)
 	{
@@ -71,24 +94,7 @@ void	ft_struct(t_principal **principal)
 		*principal = NULL;
 		return ;
 	}
-	(*principal)->bench->pa_count = 0;
-	(*principal)->bench->pb_count = 0;
-	(*principal)->bench->ra_count = 0;
-	(*principal)->bench->rb_count = 0;
-	(*principal)->bench->rr_count = 0;
-	(*principal)->bench->rra_count = 0;
-	(*principal)->bench->rrb_count = 0;
-	(*principal)->bench->rrr_count = 0;
-	(*principal)->bench->sa_count = 0;
-	(*principal)->bench->sb_count = 0;
-	(*principal)->bench->ss_count = 0;
-	(*principal)->bench->total_count = 0;
-	(*principal)->a = NULL;
-	(*principal)->b = NULL;
-	(*principal)->bench->simple = 0;
-	(*principal)->bench->medium = 0;
-	(*principal)->bench->complex = 0;
-	(*principal)->bench->adaptative = 0;
+	init_bench(&(*principal)->bench);
 }
 
 int	main(int arc, char **argv)

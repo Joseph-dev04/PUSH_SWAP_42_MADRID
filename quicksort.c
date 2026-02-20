@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   quicksort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 09:51:37 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/20 13:51:25 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/20 19:12:57 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,8 @@ void	ft_logic(int **list, int inicio, int final)
 		if (i <= j)
 		{
 			aux = (*list)[i];
-			(*list)[i] = (*list)[j];
-			(*list)[j] = aux;
-			i++;
-			j--;
+			(*list)[i++] = (*list)[j];
+			(*list)[j--] = aux;
 		}
 	}
 	if (inicio < j)

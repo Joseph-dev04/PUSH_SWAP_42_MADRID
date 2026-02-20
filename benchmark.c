@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   benchmark.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 17:21:25 by aitorres          #+#    #+#             */
-/*   Updated: 2026/02/20 15:26:38 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/20 18:41:29 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ static void	bench_strategy(t_principal **principal)
 		if ((*principal)->bench->simple == 1)
 			write(2, "O2\n", 3);
 		else if ((*principal)->bench->medium == 1)
-			write(2, "O(n√n)\n", 7);
+			write(2, "O(n√n)\n", 9);
 		else if ((*principal)->bench->complex == 1)
 			write(2, "O(nlogn)\n", 9);
 	}
 	else if ((*principal)->bench->simple == 1)
 		write(2, "[bench] Strategy: Simple / O2\n", 30);
 	else if ((*principal)->bench->medium == 1)
-		write(2, "[bench] Strategy: Medium / O(n√n)\n", 34);
+		write(2, "[bench] Strategy: Medium / O(n√n)\n", 36);
 	else if ((*principal)->bench->complex == 1)
 		write(2, "[bench] Strategy: Complex / O(nlogn)\n", 37);
 }
@@ -80,7 +80,7 @@ static void	bench_linetwo_funciones(t_principal **principal)
 
 void	bench_union(t_principal **principal)
 {
-	bench_disorder(compute_disorder((*principal)->a));
+	bench_disorder((*principal)->bench->compute_disorder);
 	bench_strategy(principal);
 	bench_total_ops(principal);
 	bench_lineone_funciones (principal);

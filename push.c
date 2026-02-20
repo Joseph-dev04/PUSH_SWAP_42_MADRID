@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 10:53:33 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/20 13:51:42 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/20 18:19:24 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-// extern int contador;
+
 void	ft_pa(t_principal **principal, int count_bench)
 {
 	t_list	*temp;

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_reverse.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 09:54:11 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/20 13:49:57 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/20 18:19:42 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 void	ft_rrr(t_principal **principal)
 {
