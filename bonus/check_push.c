@@ -1,6 +1,18 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_push.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/20 09:37:37 by jopajuel          #+#    #+#             */
+/*   Updated: 2026/02/20 11:02:21 by jopajuel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-void	ft_pa(t_list **a, t_list **b)
+#include "push_swap_bonus.h"
+
+static void	ft_pa(t_list **a, t_list **b)
 {
 	t_list	*temp;
 
@@ -12,7 +24,7 @@ void	ft_pa(t_list **a, t_list **b)
 	*a = temp;
 }
 
-void	ft_pb(t_list **a, t_list **b)
+static void	ft_pb(t_list **a, t_list **b)
 {
 	t_list	*temp;
 
@@ -26,8 +38,8 @@ void	ft_pb(t_list **a, t_list **b)
 
 void    ft_check_push(char *line, t_checker **bonus)
 {
-    if (ft_strnstr(line, "pa\n", ft_strlen(line)))
+    if (ft_strnstr(line, "pa\n", ft_strlen2(line)))
         ft_pa(&(*bonus)->a, &(*bonus)->b);
-    else if (ft_strnstr(line, "pb\n", ft_strlen(line)))
+    else if (ft_strnstr(line, "pb\n", ft_strlen2(line)))
         ft_pb(&(*bonus)->a, &(*bonus)->b);
 }

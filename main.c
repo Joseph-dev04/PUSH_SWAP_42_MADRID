@@ -6,7 +6,7 @@
 /*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:31:38 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/19 10:00:56 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/20 12:42:45 by jopajuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ void	ft_struct(t_principal **principal)
 		*principal = NULL;
 		return ;
 	}
-	// (*principal)->bench = NULL;
 	(*principal)->bench->pa_count = 0;
 	(*principal)->bench->pb_count = 0;
 	(*principal)->bench->ra_count = 0;
@@ -88,9 +87,12 @@ void	ft_struct(t_principal **principal)
 	(*principal)->bench->sb_count = 0;
 	(*principal)->bench->ss_count = 0;
 	(*principal)->bench->total_count = 0;
-	(*principal)->bench->sizea = 0;
 	(*principal)->a = NULL;
 	(*principal)->b = NULL;
+	(*principal)->bench->simple = 0;
+	(*principal)->bench->medium = 0;
+	(*principal)->bench->complex = 0;
+	(*principal)->bench->adaptative = 0;
 }
 
 int	main(int arc, char **argv)

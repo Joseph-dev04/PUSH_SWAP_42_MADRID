@@ -1,4 +1,16 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_rreverse.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/02/20 09:37:20 by jopajuel          #+#    #+#             */
+/*   Updated: 2026/02/20 10:53:19 by jopajuel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap_bonus.h"
 
 void	ft_rra(t_list **a)
 {
@@ -44,10 +56,10 @@ void	ft_rrr(t_list **a, t_list **b)
 
 void    ft_check_rreverse(char *line, t_checker **bonus)
 {
-    if (ft_strnstr(line, "rra\n", ft_strlen(line)))
+    if (ft_strnstr(line, "rra\n", ft_strlen2(line)))
         ft_rra(&(*bonus)->a);
-    else if (ft_strnstr(line, "rrb\n", ft_strlen(line)))
+    else if (ft_strnstr(line, "rrb\n", ft_strlen2(line)))
         ft_rrb(&(*bonus)->b);
-    else if (ft_strnstr(line, "rrr\n", ft_strlen(line)))
+    else if (ft_strnstr(line, "rrr\n", ft_strlen2(line)))
         ft_rrr(&(*bonus)->a, &(*bonus)->b);
 }

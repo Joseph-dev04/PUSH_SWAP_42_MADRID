@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:29:24 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/19 17:41:57 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/20 12:41:29 by jopajuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ typedef struct s_stats
 	int			sb_count;
 	int			ss_count;
 	int			total_count;
-	int			sizea;
+	int			simple;
+	int			medium;
+	int			complex;
+	int			adaptative;
 }	t_stats;
 
 typedef struct s_principal
@@ -49,11 +52,9 @@ typedef struct s_principal
 	struct s_list	*b;
 }	t_principal;
 
-typedef struct s_checker
-{
-	struct s_list	*a;
-	struct s_list	*b;
-}	t_checker;
+
+
+
 
 int		ft_get_num(char *list_num, t_list **a);
 int		ft_strlen(char *str);

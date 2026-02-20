@@ -6,21 +6,25 @@
 /*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 11:39:39 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/19 12:40:54 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/20 12:08:08 by jopajuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap_bonus.h"
 
-int	charge_num(char **argv, t_checker **bonus)
+int	charge_num(int arc, char **argv, t_checker **bonus)
 {
 	int	size;
+	int	i;
 
-	//printf("%i\n",arc);
-	//printf("entro %i\n", i);
-	size = ft_get_num(argv[1], &(*bonus)->a);
-	if (size == -1)
-		return (1);
+	i = 1;
+	while (i < arc)
+	{
+		size = ft_get_num(argv[i], &(*bonus)->a);
+		if (size == -1)
+			return (1);
+		i++;
+	}
 	return (0);
 }
 
@@ -28,7 +32,7 @@ void	ft_struct(t_checker **bonus)
 {
 	*bonus = malloc(sizeof(t_checker));
 	if (!*bonus)
-		return (NULL);
+		return ;
 	(*bonus)->a = NULL;
 	(*bonus)->b = NULL;
 }
@@ -43,8 +47,8 @@ void	ft_execute(char *line, t_checker **bonus)
 
 int	ft_orden(t_checker *bonus)
 {
-	t_list *temp;
-	int num;
+	t_list	*temp;
+	int		num;
 
 	if (ft_size_lis(bonus->a) == 1)
 		return (1);
@@ -69,17 +73,17 @@ int	main(int arc, char **argv)
 	char		*line;
 
 	bonus = NULL;
-	if (arc == 2)
+	if (arc > 1)
 	{
 		ft_struct(&bonus);
-		if (!charge_num(argv, &bonus))
+		if (charge_num(arc, argv, &bonus))
 			return (ft_error());
-		line = get_next_line(1);
+		line = get_next_line(0);
 		while (line)
 		{
 			ft_execute(line, &bonus);
 			free(line);
-			line = get_next_line(1);
+			line = get_next_line(0);
 		}
 		if (ft_orden(bonus))
 			return (write(1, "OK\n", 3));
@@ -88,4 +92,3 @@ int	main(int arc, char **argv)
 	}
 	return (ft_error());
 }
-

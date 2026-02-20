@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intermedio.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 15:11:53 by aitorres          #+#    #+#             */
-/*   Updated: 2026/02/19 17:14:16 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/20 12:29:07 by jopajuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ void medium_extraccion(t_principal **principal)
 		simple_extraccion(principal);
 		return ;
 	}
-
+	printf("medio\n");
 	ft_reset_index(&(*principal)->a);
 	index_mayor_a_menor(&(*principal)->a);
 

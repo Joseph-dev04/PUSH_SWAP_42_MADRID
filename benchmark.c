@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   benchmark.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 17:21:25 by aitorres          #+#    #+#             */
-/*   Updated: 2026/02/19 19:04:04 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/20 12:49:01 by jopajuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,10 @@ void ft_putnbr_fd2(int number)
 void bench_disorder(float disorder_value)
 {
 	int		integro;
-	int		decimal;
+	int	decimal;
 
 	integro = disorder_value * 100;
-	decimal	= (disorder_value * 10000) % 100;
+	decimal	= (int)(disorder_value * 10000) % 100;
 
 	write(2, "[bench] Disorder: ", 18);
 	ft_putnbr_fd2(integro / 10);
@@ -92,13 +92,13 @@ void bench_strategy(char strategy, t_principal **principal)
 void bench_total_ops(t_principal **principal)
 {
 	int		total_ops;
-	char	buffer_total_ops[2147483647];
+	char	buffer_total_ops[12];
 	int		len;
 	
 	if (!principal || !*principal || !(*principal)->bench)
 		return ;
 	total_ops = (*principal)->bench->total_count;
-	
+	len = 0;
 	write(2, "[bench] Total_ops: ", 20);
 	while(total_ops > 0)
 	{
