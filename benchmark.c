@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   benchmark.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 17:21:25 by aitorres          #+#    #+#             */
-/*   Updated: 2026/02/20 12:49:01 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/20 13:44:52 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ float compute_disorder(t_list *stack_a)
 	// return (float)((double)mistakes / (double)total_pairs);
 }
 
-void ft_putnbr_fd2(int number)
+static void ft_putnbr_fd2(int number)
 {
 	char	c;
 
@@ -51,7 +51,7 @@ void ft_putnbr_fd2(int number)
 	write(2, &c, 1);
 }
 
-void bench_disorder(float disorder_value)
+static void bench_disorder(float disorder_value)
 {
 	int		integro;
 	int	decimal;
@@ -69,27 +69,28 @@ void bench_disorder(float disorder_value)
 
 
 
-void bench_strategy(char strategy, t_principal **principal)
+static void bench_strategy(t_principal **principal)
 {
-	if (strategy == "--simple")
-		write(2, "[bench] Strategy: Simple / O2\n", 34);
-	else if (strategy == "--medium")
-		write(2, "[bench] Strategy: Medium / O(n√n)\n", 44);
-	else if (strategy == "--complex")
-		write(2, "[bench] Strategy: Complex / O(nlogn)\n", 44);
-	else if (strategy == "--adaptative")
+
+	if ((*principal)->bench->adaptative	== 1)
 	{
 		write(2, "[bench] Strategy: Adaptative / ", 34);
-		if ((*principal)->bench->strategy == "--simple")
+		if ((*principal)->bench->simple == 1)
 			write(2, "O2\n", 34);
-		else if ((*principal)->bench->strategy == "--medium")
+		else if ((*principal)->bench->medium == 1)
 			write(2, "O(n√n)\n", 44);
-		else if ((*principal)->bench->strategy == "--complex")
+		else if ((*principal)->bench->complex == 1)
 			write(2, "O(n log n)\n", 44);
 	}
+	else if ((*principal)->bench->simple == 1)
+		write(2, "[bench] Strategy: Simple / O2\n", 34);
+	else if ((*principal)->bench->medium == 1)
+		write(2, "[bench] Strategy: Medium / O(n√n)\n", 44);
+	else if ((*principal)->bench->complex == 1)
+		write(2, "[bench] Strategy: Complex / O(nlogn)\n", 44);
 }
 
-void bench_total_ops(t_principal **principal)
+static void bench_total_ops(t_principal **principal)
 {
 	int		total_ops;
 	char	buffer_total_ops[12];
@@ -109,7 +110,7 @@ void bench_total_ops(t_principal **principal)
 	write(2, "\n", 1);
 }
 
-void bench_lineauno_funciones (t_principal **principal)
+static void bench_lineauno_funciones (t_principal **principal)
 {
 	
 	write(2, "[bench] sa:", 12);
@@ -144,7 +145,7 @@ void bench_lineauno_funciones (t_principal **principal)
 
 }
 
-void bench_lineados_funciones (t_principal **principal)
+static void bench_lineados_funciones (t_principal **principal)
 {
 	
 	write(2, "[bench] ra:", 12);
@@ -183,4 +184,13 @@ void bench_lineados_funciones (t_principal **principal)
 	
 	write(2, "\n", 1);
 
+}
+
+void bench_union(t_principal **principal)
+{
+	bench_disorder(compute_disorder((*principal)->a));
+	bench_strategy(principal);
+	bench_total_ops(principal);
+	bench_lineauno_funciones (principal);
+	bench_lineados_funciones (principal);
 }
