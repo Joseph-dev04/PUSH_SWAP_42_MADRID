@@ -6,7 +6,7 @@
 /*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:36:21 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/20 13:53:26 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/20 15:49:39 by jopajuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	ft_brench_status(int arc, char **argv, int *position)
 {
-	int i;
+	int	i;
 	int	bench;
 
 	i = 1;
@@ -144,21 +144,50 @@ float	compute_disorder(t_list *stack_a)
 	long long		mistakes;
 	long long		total_pairs;
 	t_list			*n_nodo_a;
-	t_list			*n_nodo_b;
+	t_list			*n_nodo_a_next;
 
 	mistakes = 0;
 	total_pairs = 0;
 	n_nodo_a = stack_a;
-	n_nodo_b = n_nodo_a;
+	// n_nodo_a_next = n_nodo_a;
 	while (n_nodo_a != NULL)
 	{
-		n_nodo_b = n_nodo_a->next;
-		while (n_nodo_b != NULL)
+		n_nodo_a_next = n_nodo_a->next;
+		while (n_nodo_a_next != NULL)
 		{
 			total_pairs++;
-			if (n_nodo_a->value > n_nodo_b->value)
+			if (n_nodo_a->value > n_nodo_a_next->value)
 				mistakes++;
-			n_nodo_b = n_nodo_b->next;
+			n_nodo_a_next = n_nodo_a_next->next;
+			// n_nodo_a = n_nodo_a->next;
+		}
+		n_nodo_a = n_nodo_a->next;
+	}
+	if (total_pairs == 0)
+		return (0.0);
+	return ((float)mistakes / (float)total_pairs);
+}
+
+float	compute_disorder(t_list *stack_a)
+{
+	long long		mistakes;
+	long long		total_pairs;
+	t_list			*n_nodo_a;
+	t_list			*n_nodo_a_next;
+
+	mistakes = 0;
+	total_pairs = 0;
+	n_nodo_a = stack_a;
+	// n_nodo_a_next = n_nodo_a;
+	while (n_nodo_a != NULL)
+	{
+		n_nodo_a_next = n_nodo_a->next;
+		while (n_nodo_a_next != NULL)
+		{
+			total_pairs++;
+			if (n_nodo_a->value > n_nodo_a_next->value)
+				mistakes++;
+			n_nodo_a_next = n_nodo_a_next->next;
 		}
 		n_nodo_a = n_nodo_a->next;
 	}

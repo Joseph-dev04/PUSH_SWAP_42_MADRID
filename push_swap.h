@@ -6,7 +6,7 @@
 /*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:29:24 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/20 12:41:29 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/20 15:26:00 by jopajuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,13 @@ void	ft_adaptative(t_principal **principal);
 void	ft_reset_index(t_list **a);
 
 //--medium && --simple
-void simple_extraccion_pequena(t_principal **principal);
+void	simple_extraccion_pequena(t_principal **principal);
+
+//--bench
+void	bench_union(t_principal **principal);
+void	ft_putnbr_fd2(int number);
+void	bench_disorder(float disorder_value);
+
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:31:38 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/20 14:42:03 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/20 14:50:11 by jopajuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,8 @@ int	main(int arc, char **argv)
 			|| ft_module_status(arc, argv, &flag) > 1)
 			return (ft_error());
 		ft_type(argv, arc, &principal, flag);
-		principal->b = principal->a;
-		while (principal->b)
-			principal->b = principal->b->next;
+		if (bench)
+			bench_union(&principal);
 		ft_free_a(principal->a);
 	}
 	return (0);
