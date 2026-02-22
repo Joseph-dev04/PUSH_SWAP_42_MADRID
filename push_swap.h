@@ -22,6 +22,10 @@ typedef struct s_list
 {
 	int				index;
 	int				value;
+	int				pos;
+	int				target_pos;
+	int				cost_a;
+	int				cost_b;
 	struct s_list	*next;
 }	t_list;
 

@@ -22,6 +22,37 @@ int	ft_max_bits(int size)
 	return (count_bits);
 }
 
+int	get_target_pos(t_list *a, int b_index)
+{
+	t_list	*tmp;
+	int	target_index;
+	int	target_pos;
+
+	tmp = a;
+	target_index = INT_MAX;
+	target_pos = 0;
+	while (tmp)
+	{
+		if (tmp->index > b_index && tmp->index < target_index)
+		{
+			
+		}
+	}
+}
+
+void	update_position(t_list *stack)
+{
+	int	i;
+
+	i = 0;
+	while (stack)
+	{
+		stack->pos = i;
+		stack = stack->next;
+		i++;
+	}
+}
+
 void	ft_orden_bits(t_principal **principal, int size)
 {
 	int	max;

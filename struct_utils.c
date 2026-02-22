@@ -78,6 +78,10 @@ t_list	*ft_new_list(int num, int index)
 	}
 	new->value = num;
 	new->index = index;
+	new->cost_a = 0;
+	new->cost_b = 0;
+	new->target_pos = 0;
+	new->pos = index;
 	new->next = NULL;
 	return (new);
 }
