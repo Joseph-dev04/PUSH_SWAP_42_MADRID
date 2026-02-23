@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:29:24 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/23 14:13:39 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/20 19:13:55 by aitorres         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -108,16 +108,6 @@ void	simple_small_extraction(t_principal **principal);
 void	bench_union(t_principal **principal);
 void	ft_putnbr_fd2(int number);
 void	bench_disorder(float disorder_value);
-
 void	push_back(t_principal **principal);
-int		get_target_pos(t_list *a, int b_index);
-int		max(int a, int b);
-int		ft_abs(int num);
-int		num_len(int nb);
-int		get_int_min(t_list *stack);
-void	execute_mode(t_list *node, t_principal **principal);
-void	calcule_cost(t_list *a, t_list *b);
-void	final_rotate(t_principal **principal);
-t_list	*get_cheapest(t_list *b);
-int		get_total_cost(t_list *node);
+
 #endif
