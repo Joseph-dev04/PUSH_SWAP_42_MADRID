@@ -56,5 +56,5 @@ int		ft_correct(t_checker **bonus);
 int		ft_incorrect(t_checker **bonus);
 int		ft_clean(t_checker **bonus);
 int		charge_num_bonus(int arc, char **argv, t_checker **bonus);
-
+int		ft_space(char *str);
 #endif

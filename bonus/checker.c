@@ -20,6 +20,8 @@ int	charge_num_bonus(int arc, char **argv, t_checker **bonus)
 	i = 1;
 	while (i < arc)
 	{
+		if (!argv[i] || !ft_space(argv[i]))
+			return (write(1, "Error\n", 6));
 		size = ft_get_num(argv[i], &(*bonus)->a);
 		if (size == -1)
 			return (1);
@@ -90,5 +92,5 @@ int	main(int arc, char **argv)
 		else
 			return (ft_incorrect(&bonus));
 	}
-	return (ft_error());
+	return (0);
 }

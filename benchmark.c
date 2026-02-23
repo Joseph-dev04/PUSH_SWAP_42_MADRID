@@ -35,12 +35,12 @@ static void	bench_strategy(t_principal **principal)
 static void	bench_total_ops(t_principal **principal)
 {
 	int		total_ops;
-	int		len;
+	//int		len;
 
 	if (!principal || !*principal || !(*principal)->bench)
 		return ;
 	total_ops = (*principal)->bench->total_count;
-	len = 0;
+	//len = 0;
 	write(2, "[bench] Total_ops: ", 19);
 	ft_putnbr_fd2(total_ops);
 	write(2, "\n", 1);
