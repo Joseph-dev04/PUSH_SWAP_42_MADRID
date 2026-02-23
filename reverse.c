@@ -34,9 +34,9 @@ void	ft_ra(t_principal **principal, int count_bech)
 	(*principal)->a = first->next;
 	first->next = NULL;
 	ft_add_back(&(*principal)->a, first);
-	write (1, "ra\n", 3);
 	if (count_bech == 0)
 	{
+		write (1, "ra\n", 3);
 		(*principal)->bench->ra_count++;
 		(*principal)->bench->total_count++;
 		return ;
@@ -53,9 +53,9 @@ void	ft_rb(t_principal **principal, int count_bech)
 	(*principal)->b = first->next;
 	first->next = NULL;
 	ft_add_back(&(*principal)->b, first);
-	write (1, "rb\n", 3);
 	if (count_bech == 0)
 	{
+		write (1, "rb\n", 3);
 		(*principal)->bench->rb_count++;
 		(*principal)->bench->total_count++;
 		return ;

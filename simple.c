@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   simple.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 18:20:13 by aitorres          #+#    #+#             */
-/*   Updated: 2026/02/20 19:10:56 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/23 13:36:48 by jopajuel         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "push_swap.h"
 
@@ -37,7 +37,7 @@ static void	sort_three_elements(t_principal **principal)
 		ft_sa(principal, 0);
 }
 
-void simple_small_extraction(t_principal **principal)
+void	simple_small_extraction(t_principal **principal)
 {
 	int	size;
 

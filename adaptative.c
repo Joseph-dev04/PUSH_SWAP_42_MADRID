@@ -50,7 +50,7 @@ void	ft_adaptative(t_principal **principal)
 	if (num >= 0.5f)
 	{
 		(*principal)->bench->complex = 1;
-		complex_extraction(principal, ft_size_lis((*principal)->a));
+		push_back(principal);
 	}
 	else if (num < 0.5f && num >= 0.2f)
 	{

@@ -40,9 +40,9 @@ void	ft_rra(t_principal **principal, int count_bench)
 	plast->next = NULL;
 	last->next = first;
 	(*principal)->a = last;
-	write (1, "rra\n", 4);
 	if (count_bench == 0)
 	{
+		write (1, "rra\n", 4);
 		(*principal)->bench->rra_count++;
 		(*principal)->bench->total_count++;
 		return ;
@@ -65,9 +65,9 @@ void	ft_rrb(t_principal **principal, int count_bench)
 	plast->next = NULL;
 	last->next = first;
 	(*principal)->b = last;
-	write (1, "rrb\n", 4);
 	if (count_bench == 0)
 	{
+		write (1, "rrb\n", 4);
 		(*principal)->bench->rrb_count++;
 		(*principal)->bench->total_count++;
 		return ;

@@ -15,8 +15,8 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include <fcntl.h>
+# include <limits.h>
 
 typedef struct s_list
 {
@@ -60,7 +60,7 @@ typedef struct s_principal
 int		ft_get_num(char *list_num, t_list **a);
 int		ft_strlen(char *str);
 void	ft_type(char **argv, int arc, t_principal **principal, int flag);
-int		ft_error();
+int		ft_error(void);
 void	ft_free(t_list *a);
 void	ft_free_a(t_list *a);
 int		ft_isdigit(int c);
@@ -86,12 +86,13 @@ void	ft_rrr(t_principal **principal);
 
 float	compute_disorder(t_list *stack_a);
 
-void	complex_extraction(t_principal **principal, int size);
+void	push_back(t_principal **principal);
 void	*ft_quicksort(t_list **a);
 int		num_len(int nb);
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t n);
 int		ft_size_lis(t_list *a);
+int		duplicate(t_list **a);
 
 void	simple_extraction(t_principal **principal);
 void	medium_extraccion(t_principal **principal);
@@ -107,6 +108,6 @@ void	simple_small_extraction(t_principal **principal);
 void	bench_union(t_principal **principal);
 void	ft_putnbr_fd2(int number);
 void	bench_disorder(float disorder_value);
-
+void	push_back(t_principal **principal);
 
 #endif

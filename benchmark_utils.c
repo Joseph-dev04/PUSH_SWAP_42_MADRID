@@ -15,7 +15,7 @@
 void	ft_putnbr_fd2(int number)
 {
 	char	c;
-	
+
 	if (number >= 10)
 		ft_putnbr_fd2(number / 10);
 	c = (number % 10) + '0';

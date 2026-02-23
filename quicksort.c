@@ -93,4 +93,3 @@ void	*ft_quicksort(t_list **a)
 	free(list_num);
 	return (0);
 }
-

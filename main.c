@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 int	charge_num(char **argv, int arc, t_principal **principal, int flag)
 {
@@ -28,6 +27,8 @@ int	charge_num(char **argv, int arc, t_principal **principal, int flag)
 			size = ft_get_num(argv[i], &(*principal)->a);
 			if (size == -1)
 				return (1);
+			if (duplicate(&(*principal)->a) == 0)
+				return (ft_error());
 		}
 		i++;
 	}
@@ -36,7 +37,6 @@ int	charge_num(char **argv, int arc, t_principal **principal, int flag)
 
 void	ft_type(char **argv, int arc, t_principal **principal, int flag)
 {
-
 	if (ft_strnstr(argv[flag], "--simple", ft_strlen(argv[flag])))
 	{
 		if (!charge_num(argv, arc, principal, flag))
@@ -50,7 +50,7 @@ void	ft_type(char **argv, int arc, t_principal **principal, int flag)
 	else if (ft_strnstr(argv[flag], "--complex", ft_strlen(argv[flag])))
 	{
 		if (!charge_num(argv, arc, principal, flag))
-			complex_extraction(principal, ft_size_lis((*principal)->a));
+			push_back(principal);
 	}
 	else
 	{
@@ -116,6 +116,8 @@ int	main(int arc, char **argv)
 		if (bench)
 			bench_union(&principal);
 		ft_free_a(principal->a);
+		free(principal->bench);
+		free(principal);
 	}
 	return (0);
 }

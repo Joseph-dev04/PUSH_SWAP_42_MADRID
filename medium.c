@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
 
 static int	raiz_size(int size)
@@ -27,7 +26,7 @@ static int	raiz_size(int size)
 	return (i- 1);
 }
 
-static void index_mayor_a_menor(t_list **a)
+static void	index_mayor_a_menor(t_list **a)
 {
 	t_list	*nodo_a;
 	t_list	*comparate_nodo_a;
@@ -36,7 +35,6 @@ static void index_mayor_a_menor(t_list **a)
 
 	size = ft_size_lis(*a);
 	index = size - 1;
-
 	while (index >= 0)
 	{
 		nodo_a = *a;
@@ -65,7 +63,6 @@ static void	semi_colocacion_b(t_principal **principal)
 
 	r_size = raiz_size(ft_size_lis((*principal)->a));
 	i = 0;
-
 	while ((*principal)->a)
 	{
 		if ((*principal)->a->index <= i)
@@ -132,9 +129,6 @@ void medium_extraccion(t_principal **principal)
 	}
 	ft_reset_index(&(*principal)->a);
 	index_mayor_a_menor(&(*principal)->a);
-
 	semi_colocacion_b(principal);
-
 	pasar_b_a(principal);
-
 }
