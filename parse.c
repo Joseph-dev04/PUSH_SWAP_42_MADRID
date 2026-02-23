@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:36:21 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/23 14:28:51 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/23 13:36:00 by jopajuel         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "push_swap.h"
 
@@ -98,8 +98,7 @@ int	ft_itoa_pro(char *str, t_list **a, int index, int *i)
 
 int	ft_get_num(char *list_num, t_list **a)
 {
-	int		i;
-	char	c;
+	int	i;
 
 	i = 0;
 	while (list_num[i])
@@ -108,11 +107,11 @@ int	ft_get_num(char *list_num, t_list **a)
 			i++;
 		if (list_num[i] == '\0')
 			break ;
-		c = list_num[i];
-		if (c >= '\t' && c <= '\r')
+		if (list_num[i] >= '\t' && list_num[i] <= '\r')
 			return (ft_error());
-		if (ft_isdigit(c) || ((c == '-' || c == '+')
-				&& ft_isdigit(list_num[i + 1])))
+		if (ft_isdigit(list_num[i])
+			|| (((list_num[i] == '-' || list_num[i] == '+')
+				&& ft_isdigit(list_num[i + 1]))))
 		{
 			if (ft_itoa_pro(&list_num[i], a, 0, &i) == -1)
 				return (ft_error());

@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   medium.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 15:11:53 by aitorres          #+#    #+#             */
-/*   Updated: 2026/02/23 14:29:27 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/23 16:19:24 by jopajuel         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "push_swap.h"
 
@@ -17,39 +17,42 @@ static int	raiz_size(int size)
 	int	i;
 
 	i = 1;
-	if (size <= 0)
+	if (size <=0)
 		return (0);
 	if (size == 1)
 		return (1);
 	while ((i * i) <= size)
 		i++;
-	return (i - 1);
+	return (i- 1);
 }
 
 static void	index_mayor_a_menor(t_list **a)
 {
-	t_list	*nodo;
-	t_list	*min;
-	int		idx;
+	t_list	*nodo_a;
+	t_list	*comparate_nodo_a;
+	int		index;
+	int		size;
 
-	idx = ft_size_lis(*a) - 1;
-	while (idx >= 0)
+	size = ft_size_lis(*a);
+	index = size - 1;
+	while (index >= 0)
 	{
-		nodo = *a;
-		min = NULL;
-		while (nodo)
+		nodo_a = *a;
+		comparate_nodo_a = NULL;
+		while (nodo_a)
 		{
-			if (nodo->index == -1)
+			if (nodo_a->index == -1)
 			{
-				if (!min || nodo->value < min->value)
-					min = nodo;
+				if (comparate_nodo_a == NULL || nodo_a->value < comparate_nodo_a->value)
+					comparate_nodo_a = nodo_a;
 			}
-			nodo = nodo->next;
+			nodo_a = nodo_a->next;
 		}
-		if (!min)
-			break ;
-		min->index = idx;
-		idx--;
+		if (comparate_nodo_a)
+		{
+			comparate_nodo_a->index = index;
+			index--;
+		}
 	}
 }
 
@@ -108,9 +111,9 @@ static void	pasar_b_a(t_principal **principal)
 	}
 }
 
-void	medium_extraccion(t_principal **principal)
+void medium_extraccion(t_principal **principal)
 {
-	int	size;
+	int size;
 
 	if (!principal || !*principal || !(*principal)->a)
 	{
@@ -119,16 +122,13 @@ void	medium_extraccion(t_principal **principal)
 	size = ft_size_lis((*principal)->a);
 	(*principal)->bench->compute_disorder = compute_disorder((*principal)->a);
 	(*principal)->bench->medium = 1;
-	if ((*principal)->bench->compute_disorder > 0.0f)
+	if (size <= 3)
 	{
-		if (size <= 3)
-		{
-			simple_small_extraction(principal);
-			return ;
-		}
-		ft_reset_index(&(*principal)->a);
-		index_mayor_a_menor(&(*principal)->a);
-		semi_colocacion_b(principal);
-		pasar_b_a(principal);
+		simple_small_extraction(principal);
+		return ;
 	}
+	ft_reset_index(&(*principal)->a);
+	index_mayor_a_menor(&(*principal)->a);
+	semi_colocacion_b(principal);
+	pasar_b_a(principal);
 }

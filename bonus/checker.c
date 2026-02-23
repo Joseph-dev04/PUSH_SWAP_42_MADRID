@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 11:39:39 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/20 12:08:08 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/23 16:07:22 by jopajuel         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "push_swap_bonus.h"
 
@@ -45,7 +45,7 @@ void	ft_execute(char *line, t_checker **bonus)
 	ft_check_rreverse(line, bonus);
 }
 
-int	ft_orden(t_checker *bonus)
+int	ft_order(t_checker *bonus)
 {
 	t_list	*temp;
 	int		num;
@@ -77,7 +77,7 @@ int	main(int arc, char **argv)
 	{
 		ft_struct(&bonus);
 		if (charge_num(arc, argv, &bonus))
-			return (ft_error());
+			return (ft_clean(&bonus));
 		line = get_next_line(0);
 		while (line)
 		{
@@ -85,10 +85,10 @@ int	main(int arc, char **argv)
 			free(line);
 			line = get_next_line(0);
 		}
-		if (ft_orden(bonus))
-			return (write(1, "OK\n", 3));
+		if (ft_order(bonus))
+			return (ft_correct(&bonus));
 		else
-			return (write(1, "KO\n", 3));
+			return (ft_incorrect(&bonus));
 	}
 	return (ft_error());
 }

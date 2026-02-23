@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   simple.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 18:20:13 by aitorres          #+#    #+#             */
-/*   Updated: 2026/02/23 14:14:44 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/23 13:36:48 by jopajuel         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "push_swap.h"
 
@@ -104,11 +104,8 @@ void	simple_extraction(t_principal **principal)
 	(*principal)->bench->simple = 1;
 	size = ft_size_lis((*principal)->a);
 	(*principal)->bench->compute_disorder = compute_disorder((*principal)->a);
-	if ((*principal)->bench->compute_disorder > 0.0f)
-	{
-		if (size <= 3)
-			simple_small_extraction(principal);
-		else
-			simple_large_extraction(principal);
-	}
+	if (size <= 3)
+		simple_small_extraction(principal);
+	else
+		simple_large_extraction(principal);
 }

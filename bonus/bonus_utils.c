@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   bonus_utils.c                                      :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 09:48:58 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/20 11:24:12 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/23 14:34:14 by jopajuel         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "push_swap_bonus.h"
 
@@ -30,7 +30,6 @@ int	ft_isdigit(int c)
 		return (1);
 	return (0);
 }
-
 
 int	ft_atoi(const char *str)
 {
@@ -84,6 +83,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
 		return ((char *)haystack);
 	return (NULL);
 }
+
 char	*ft_substr2(char const *s, unsigned int start, size_t len)
 {
 	char	*str;

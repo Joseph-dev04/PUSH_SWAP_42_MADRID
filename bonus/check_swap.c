@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   check_swap.c                                       :+:      :+:    :+:   */
@@ -6,9 +6,9 @@
 /*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 09:37:06 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/20 11:02:51 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/23 14:47:13 by jopajuel         ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "push_swap_bonus.h"
 
@@ -19,7 +19,7 @@ static void	ft_sa(t_list **a)
 
 	if (!*a || !(*a)->next)
 		return ;
-	first =  *a;
+	first = *a;
 	second = first->next;
 	first->next = second->next;
 	second->next = first;
@@ -33,24 +33,25 @@ static void	ft_sb(t_list **b)
 
 	if (!*b || !(*b)->next)
 		return ;
-	first =  *b;
+	first = *b;
 	second = first->next;
 	first->next = second->next;
 	second->next = first;
 	*b = second;
 }
+
 static void	ft_ss(t_list **a, t_list **b)
 {
 	ft_sa(a);
 	ft_sb(b);
 }
 
-void    ft_check_swap(char *line, t_checker **bonus)
+void	ft_check_swap(char *line, t_checker **bonus)
 {
-    if (ft_strnstr(line, "sa\n", ft_strlen2(line)))
-        ft_sa(&(*bonus)->a);
-    else if (ft_strnstr(line, "sb\n", ft_strlen2(line)))
-        ft_sb(&(*bonus)->b);
-    else if (ft_strnstr(line, "ss\n", ft_strlen2(line)))
-        ft_ss(&(*bonus)->a, &(*bonus)->b);
+	if (ft_strnstr(line, "sa\n", ft_strlen2(line)))
+		ft_sa(&(*bonus)->a);
+	else if (ft_strnstr(line, "sb\n", ft_strlen2(line)))
+		ft_sb(&(*bonus)->b);
+	else if (ft_strnstr(line, "ss\n", ft_strlen2(line)))
+		ft_ss(&(*bonus)->a, &(*bonus)->b);
 }
