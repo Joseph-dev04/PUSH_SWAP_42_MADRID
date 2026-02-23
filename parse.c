@@ -6,7 +6,7 @@
 /*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:36:21 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/23 16:42:35 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/23 18:54:33 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,24 +53,29 @@ int	ft_module_status(int arc, char **argv, int *position)
 	return (flags);
 }
 
-int	duplicate(t_list	**a)
+static long	ft_atoi_long(const char *str)
 {
-	t_list	*n;
-	t_list	*move;
+	int		i;
+	long	nb;
+	int		sign;
 
-	n = *a;
-	while (n)
+	i = 0;
+	nb = 0;
+	sign = 1;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		move = n->next;
-		while (move)
-		{
-			if (n->value == move->value)
-				return (0);
-			move = move->next;
-		}
-		n = n->next;
+		if (str[i] == '-')
+			sign = -1;
+		i++;
 	}
-	return (1);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nb = nb * 10 + (str[i] - '0');
+		i++;
+	}
+	return (nb * sign);
 }
 
 int	ft_itoa_pro(char *str, t_list **a, int index, int *i)
@@ -78,6 +83,7 @@ int	ft_itoa_pro(char *str, t_list **a, int index, int *i)
 	int		j;
 	char	*num;
 	t_list	*new;
+	long	limit;
 
 	j = 0;
 	if (str[j] == '-' || str[j] == '+')
@@ -89,6 +95,12 @@ int	ft_itoa_pro(char *str, t_list **a, int index, int *i)
 	if (str[j] != ' ' && str[j] != '\0')
 		return (-1);
 	num = ft_substr(str, 0, j);
+	limit = ft_atoi_long(num); 
+    if (limit > 2147483647 || limit < -2147483648)
+    {
+        free(num);
+        return (-1);
+    }
 	*i += j;
 	new = ft_new_list(ft_atoi(num), index);
 	free(num);

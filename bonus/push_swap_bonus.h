@@ -6,7 +6,7 @@
 /*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 16:15:54 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/23 17:12:07 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/23 18:57:17 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,6 @@ int		ft_itoa_pro(char *str, t_list **a, int index, int *i);
 int		ft_correct(t_checker **bonus);
 int		ft_incorrect(t_checker **bonus);
 int		ft_clean(t_checker **bonus);
+int		charge_num_bonus(int arc, char **argv, t_checker **bonus);
+
 #endif

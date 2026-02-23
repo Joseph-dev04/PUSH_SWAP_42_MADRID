@@ -6,13 +6,13 @@
 /*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 11:39:39 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/23 17:15:46 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/23 18:57:35 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-int	charge_num(int arc, char **argv, t_checker **bonus)
+int	charge_num_bonus(int arc, char **argv, t_checker **bonus)
 {
 	int	size;
 	int	i;
@@ -76,7 +76,7 @@ int	main(int arc, char **argv)
 	if (arc > 1)
 	{
 		ft_struct(&bonus);
-		if (charge_num(arc, argv, &bonus))
+		if (charge_num_bonus(arc, argv, &bonus))
 			return (ft_clean(&bonus));
 		line = get_next_line(0);
 		while (line)

@@ -6,7 +6,7 @@
 /*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:31:38 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/20 19:03:17 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/23 17:37:04 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,9 @@ int	main(int arc, char **argv)
 	principal = NULL;
 	bench = 0;
 	flag = 0;
-	ft_struct(&principal);
 	if (arc > 1)
 	{
+		ft_struct(&principal);
 		if (ft_brench_status(arc, argv, &bench) > 1
 			|| ft_module_status(arc, argv, &flag) > 1)
 			return (ft_error());
