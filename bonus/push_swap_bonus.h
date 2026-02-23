@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 16:15:54 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/23 16:19:30 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/23 17:12:07 by aitorres         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #ifndef PUSH_SWAP_BONUS_H
 # define PUSH_SWAP_BONUS_H
@@ -50,7 +50,7 @@ float	compute_disorder(t_list *stack_a);
 void	ft_execute(char *line, t_checker **bonus);
 int		ft_brench_status(int arc, char **argv, int *position);
 int		ft_module_status(int arc, char **argv, int *position);
-int		comprobar_duplicados(t_list	**a);
+int		duplicate(t_list	**a);
 int		ft_itoa_pro(char *str, t_list **a, int index, int *i);
 int		ft_correct(t_checker **bonus);
 int		ft_incorrect(t_checker **bonus);

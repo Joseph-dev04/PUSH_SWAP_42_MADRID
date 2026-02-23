@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   bonus_get_num.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 10:56:14 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/23 14:33:55 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/23 17:13:30 by aitorres         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
@@ -40,22 +40,10 @@ int	ft_module_status(int arc, char **argv, int *position)
 	flags = 0;
 	while (i < arc)
 	{
-		if (ft_strnstr(argv[i], "--simple", 8))
-		{
-			*position = i;
-			flags++;
-		}
-		if (ft_strnstr(argv[i], "--medium", 8))
-		{
-			*position = i;
-			flags++;
-		}
-		if (ft_strnstr(argv[i], "--complex", 9))
-		{
-			*position = i;
-			flags++;
-		}
-		if (ft_strnstr(argv[i], "--adaptative", 13))
+		if (ft_strnstr(argv[i], "--simple", 8)
+			|| ft_strnstr(argv[i], "--medium", 8)
+			|| ft_strnstr(argv[i], "--complex", 9)
+			|| ft_strnstr(argv[i], "--adaptative", 13))
 		{
 			*position = i;
 			flags++;
@@ -65,7 +53,7 @@ int	ft_module_status(int arc, char **argv, int *position)
 	return (flags);
 }
 
-int	comprobar_duplicados(t_list	**a)
+int	duplicate(t_list	**a)
 {
 	t_list	*n;
 	t_list	*move;
@@ -110,7 +98,8 @@ int	ft_itoa_pro(char *str, t_list **a, int index, int *i)
 
 int	ft_get_num(char *list_num, t_list **a)
 {
-	int	i;
+	int		i;
+	char	c;
 
 	i = 0;
 	while (list_num[i])
@@ -119,11 +108,11 @@ int	ft_get_num(char *list_num, t_list **a)
 			i++;
 		if (list_num[i] == '\0')
 			break ;
-		if (list_num[i] >= '\t' && list_num[i] <= '\r')
+		c = list_num[i];
+		if (c >= '\t' && c <= '\r')
 			return (ft_error());
-		if (ft_isdigit(list_num[i])
-			|| (((list_num[i] == '-' || list_num[i] == '+')
-			&& ft_isdigit(list_num[i + 1]))))
+		if (ft_isdigit(c) || ((c == '-' || c == '+')
+				&& ft_isdigit(list_num[i + 1])))
 		{
 			if (ft_itoa_pro(&list_num[i], a, 0, &i) == -1)
 				return (ft_error());
@@ -133,36 +122,5 @@ int	ft_get_num(char *list_num, t_list **a)
 		else
 			return (ft_error());
 	}
-	if (comprobar_duplicados(a) == 0)
-		return (ft_error());
 	return (0);
-}
-
-float compute_disorder(t_list *stack_a)
-{
-	long long		mistakes;
-	long long		total_pairs;
-	t_list			*n_nodo_a;
-	t_list			*n_nodo_b;
-
-	mistakes = 0;
-	total_pairs = 0;
-	n_nodo_a = stack_a;
-	n_nodo_b = n_nodo_a;
-	while (n_nodo_a != NULL)
-	{
-		n_nodo_b = n_nodo_a->next;
-		while (n_nodo_b != NULL)
-		{
-			total_pairs++;
-			if (n_nodo_a->value > n_nodo_b->value)
-				mistakes++;
-			n_nodo_b = n_nodo_b->next;
-		}
-		n_nodo_a = n_nodo_a->next;
-	}
-	if (total_pairs == 0)
-		return (0.0);
-	printf("%f", ((float)mistakes / (float)total_pairs));
-	return ((float)mistakes / (float)total_pairs);
 }

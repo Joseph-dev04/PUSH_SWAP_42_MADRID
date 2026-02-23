@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:29:24 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/23 14:13:39 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/23 16:39:14 by aitorres         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -117,7 +117,7 @@ int		num_len(int nb);
 int		get_int_min(t_list *stack);
 void	execute_mode(t_list *node, t_principal **principal);
 void	calcule_cost(t_list *a, t_list *b);
-void	final_rotate(t_principal **principal);
+void	fin_rotate(t_principal **principal);
 t_list	*get_cheapest(t_list *b);
 int		get_total_cost(t_list *node);
 #endif

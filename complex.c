@@ -1,14 +1,14 @@
-/******************************************************************************/
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   complex.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 13:33:47 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/23 14:19:02 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/23 16:39:19 by aitorres         ###   ########.fr       */
 /*                                                                            */
-/******************************************************************************/
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -78,6 +78,6 @@ void	push_back(t_principal **principal)
 			cheap = get_cheapest((*principal)->b);
 			execute_mode(cheap, principal);
 		}
-		final_rotate(principal);
+		fin_rotate(principal);
 	}
 }

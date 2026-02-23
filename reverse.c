@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 09:51:33 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/20 13:49:00 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/23 16:45:01 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	ft_ra(t_principal **principal, int count_bech)
 		write (1, "ra\n", 3);
 		(*principal)->bench->ra_count++;
 		(*principal)->bench->total_count++;
-		return ;
 	}
 }
 
@@ -58,6 +57,5 @@ void	ft_rb(t_principal **principal, int count_bech)
 		write (1, "rb\n", 3);
 		(*principal)->bench->rb_count++;
 		(*principal)->bench->total_count++;
-		return ;
 	}
 }

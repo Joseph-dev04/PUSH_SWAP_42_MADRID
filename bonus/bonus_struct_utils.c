@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bonus_utils.c                                      :+:      :+:    :+:   */
+/*   bonus_struct_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 09:46:38 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/20 09:48:24 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/23 17:14:08 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void ft_add_back(t_list **lst, t_list *new)
+void	ft_add_back(t_list **lst, t_list *new)
 {
 	t_list	*last;
 

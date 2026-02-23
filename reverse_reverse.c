@@ -6,7 +6,7 @@
 /*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/12 09:54:11 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/20 18:19:42 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/23 16:44:26 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void	ft_rra(t_principal **principal, int count_bench)
 		write (1, "rra\n", 4);
 		(*principal)->bench->rra_count++;
 		(*principal)->bench->total_count++;
-		return ;
 	}
 }
 
@@ -70,6 +69,5 @@ void	ft_rrb(t_principal **principal, int count_bench)
 		write (1, "rrb\n", 4);
 		(*principal)->bench->rrb_count++;
 		(*principal)->bench->total_count++;
-		return ;
 	}
 }
