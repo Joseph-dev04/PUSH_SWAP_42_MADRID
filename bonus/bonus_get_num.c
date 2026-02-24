@@ -6,7 +6,7 @@
 /*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 10:56:14 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/23 17:13:30 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/24 16:39:25 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,9 @@ int	ft_itoa_pro(char *str, t_list **a, int index, int *i)
 	int		j;
 	char	*num;
 	t_list	*new;
+	long	limit;
 
-	j = 0;
-	if (str[j] == '-' || str[j] == '+')
-		j++;
+	j = (str[0] == '-' || str[0] == '+');
 	if (!ft_isdigit(str[j]))
 		return (-1);
 	while (ft_isdigit(str[j]))
@@ -89,8 +88,14 @@ int	ft_itoa_pro(char *str, t_list **a, int index, int *i)
 	if (str[j] != ' ' && str[j] != '\0')
 		return (-1);
 	num = ft_substr2(str, 0, j);
+	limit = ft_atoi_long(num);
+	if (limit > 2147483647 || limit < -2147483648)
+	{
+		free(num);
+		return (-1);
+	}
 	*i += j;
-	new = ft_new_list(ft_atoi(num), index);
+	new = ft_new_list((int)limit, index);
 	free(num);
 	ft_add_back(a, new);
 	return (0);

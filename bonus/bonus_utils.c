@@ -6,7 +6,7 @@
 /*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 09:48:58 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/23 17:14:38 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/24 16:37:19 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi_long(const char *str)
 {
 	int	i;
-	int	nb;
+	long	nb;
 	int	sign;
 
 	i = 0;

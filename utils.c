@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 10:10:21 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/20 13:43:57 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/24 16:15:27 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (str);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi_long(const char *str)
 {
-	int	i;
-	int	nb;
-	int	sign;
+	int		i;
+	long	nb;
+	int		sign;
 
 	i = 0;
 	nb = 0;
@@ -63,10 +63,10 @@ int	ft_atoi(const char *str)
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
-			sign *= -1;
+			sign = -1;
 		i++;
 	}
-	while (ft_isdigit(str[i]))
+	while (str[i] >= '0' && str[i] <= '9')
 	{
 		nb = nb * 10 + (str[i] - '0');
 		i++;

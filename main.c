@@ -6,7 +6,7 @@
 /*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:31:38 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/23 17:37:04 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/24 16:11:05 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,12 +96,14 @@ void	ft_struct(t_principal **principal)
 	}
 	init_bench(&(*principal)->bench);
 }
+#include <stdio.h>
 
 int	main(int arc, char **argv)
 {
 	int			bench;
 	int			flag;
 	t_principal	*principal;
+	t_list      *current;	//àra imprimir
 
 	principal = NULL;
 	bench = 0;
@@ -115,6 +117,17 @@ int	main(int arc, char **argv)
 		ft_type(argv, arc, &principal, flag);
 		if (bench)
 			bench_union(&principal);
+		// --- BUCLE DE PRUEBA PARA IMPRIMIR ---
+        current = principal->a;
+        printf("Contenido de la lista A:\n");
+        while (current)
+        {
+            // Ajusta 'value' al nombre real de la variable en tu struct t_list
+            printf("Nodo [%d]: %d\n", current->index, (int)current->value);
+            current = current->next;
+        }
+        printf("------------------------\n");
+        // -------------------------------------
 		ft_free_a(principal->a);
 		free(principal->bench);
 		free(principal);

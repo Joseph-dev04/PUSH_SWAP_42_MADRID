@@ -6,7 +6,7 @@
 /*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:36:21 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/23 18:54:33 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/24 16:04:40 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,26 @@ int	ft_brench_status(int arc, char **argv, int *position)
 	return (bench);
 }
 
+int	duplicate(t_list	**a)
+{
+	t_list	*n;
+	t_list	*move;
+
+	n = *a;
+	while (n)
+	{
+		move = n->next;
+		while (move)
+		{
+			if (n->value == move->value)
+				return (0);
+			move = move->next;
+		}
+		n = n->next;
+	}
+	return (1);
+}
+
 int	ft_module_status(int arc, char **argv, int *position)
 {
 	int	i;
@@ -53,31 +73,6 @@ int	ft_module_status(int arc, char **argv, int *position)
 	return (flags);
 }
 
-static long	ft_atoi_long(const char *str)
-{
-	int		i;
-	long	nb;
-	int		sign;
-
-	i = 0;
-	nb = 0;
-	sign = 1;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		nb = nb * 10 + (str[i] - '0');
-		i++;
-	}
-	return (nb * sign);
-}
-
 int	ft_itoa_pro(char *str, t_list **a, int index, int *i)
 {
 	int		j;
@@ -85,9 +80,7 @@ int	ft_itoa_pro(char *str, t_list **a, int index, int *i)
 	t_list	*new;
 	long	limit;
 
-	j = 0;
-	if (str[j] == '-' || str[j] == '+')
-		j++;
+	j = (str[0] == '-' || str[0] == '+');
 	if (!ft_isdigit(str[j]))
 		return (-1);
 	while (ft_isdigit(str[j]))
@@ -95,14 +88,14 @@ int	ft_itoa_pro(char *str, t_list **a, int index, int *i)
 	if (str[j] != ' ' && str[j] != '\0')
 		return (-1);
 	num = ft_substr(str, 0, j);
-	limit = ft_atoi_long(num); 
-    if (limit > 2147483647 || limit < -2147483648)
-    {
-        free(num);
-        return (-1);
-    }
+	limit = ft_atoi_long(num);
+	if (limit > 2147483647 || limit < -2147483648)
+	{
+		free(num);
+		return (-1);
+	}
 	*i += j;
-	new = ft_new_list(ft_atoi(num), index);
+	new = ft_new_list((int)limit, index);
 	free(num);
 	ft_add_back(a, new);
 	return (0);

@@ -6,7 +6,7 @@
 #    By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/20 15:32:45 by jopajuel          #+#    #+#              #
-#    Updated: 2026/02/23 18:58:48 by aitorres         ###   ########.fr        #
+#    Updated: 2026/02/24 16:12:36 by aitorres         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,6 @@ OBJ_DIR = obj
 SRC = main.c \
 	error.c \
 	parse.c \
-	parse_utils.c\
 	push.c \
 	quicksort.c \
 	struct_utils.c \
@@ -35,7 +34,7 @@ SRC = main.c \
 	medium_utils.c \
 	complex_utils.c \
 	complex.c \
-	comple_utils2.c \
+	complex_utils2.c \
 	reverse_reverse.c \
 	reverse.c \
 	swap.c \
@@ -62,7 +61,7 @@ OBJ_BONUS = $(addprefix $(OBJ_DIR)/, $(SRC_BONUS:.c=.o))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@$(CC) $(FLAGS) $(OBJ) -o $(NAME)
+	@$(CC) $(FLAGS) $(OBJ) -o $(NAME) -g
 	@echo "$(GREEN)$(NAME) creado."
 
 $(NAME_BONUS): $(OBJ_BONUS)
