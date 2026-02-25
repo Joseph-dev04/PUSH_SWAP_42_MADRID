@@ -129,7 +129,7 @@ Una vez tengas tu lista, pulsa Enter y disfruta de una cadena de mensajes de cad
 	pa
 	pa
 
-Como hablamos anteriormente, podemos incluir una serie de flags antes de ejecutar el programa con el grado de complejidad, en el ejemplo anterior, al no haber escrito ninguno, se ejecutará con el adaptativo, sino `--simple`, `--medium`, `--complex`e incluso `--adaptative` si quieres:
+Como hablamos anteriormente, podemos incluir una serie de flags antes de ejecutar el programa con el grado de complejidad, en el ejemplo anterior, al no haber escrito ninguno, se ejecutará con el adaptativo, sino `--simple`, `--medium`, `--complex`e incluso `--adaptive` si quieres:
 
 	./push_swap --simple "10             -999            78" 87  6 -888      "4"
 	rra

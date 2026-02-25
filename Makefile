@@ -6,7 +6,7 @@
 #    By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/20 15:32:45 by jopajuel          #+#    #+#              #
-#    Updated: 2026/02/25 13:00:12 by aitorres         ###   ########.fr        #
+#    Updated: 2026/02/25 13:23:40 by aitorres         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,21 +40,21 @@ SRC = main.c \
 	reverse.c \
 	swap.c \
 	utils.c \
-	adaptative.c \
+	adaptive.c \
 	benchmark.c \
 	benchmark_utils.c
 
-SRC_BONUS = $(DIR)/bonus_get_num.c \
-	$(DIR)/bonus_struct_utils.c \
-	$(DIR)/bonus_utils.c \
-	$(DIR)/check_push.c \
-	$(DIR)/check_reverse.c \
-	$(DIR)/check_rreverse.c \
-	$(DIR)/check_swap.c \
-	$(DIR)/checker.c \
-	$(DIR)/error.c \
-	$(DIR)/get_next_line.c \
-	$(DIR)/get_next_line_utils.c
+SRC_BONUS = $(DIR)/get_num_bonus.c \
+	$(DIR)/struct_utils_bonus.c \
+	$(DIR)/utils_bonus.c \
+	$(DIR)/check_push_bonus.c \
+	$(DIR)/check_reverse_bonus.c \
+	$(DIR)/check_rreverse_bonus.c \
+	$(DIR)/check_swap_bonus.c \
+	$(DIR)/checker_bonus.c \
+	$(DIR)/error_bonus.c \
+	$(DIR)/get_next_line_bonus.c \
+	$(DIR)/get_next_line_utils_bonus.c
 
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 OBJ_BONUS = $(addprefix $(OBJ_DIR)/, $(SRC_BONUS:.c=.o))

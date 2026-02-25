@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   benchmark.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/25 10:10:32 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/25 10:10:34 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/25 13:09:43 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	bench_strategy(t_principal **principal)
 {
-	if ((*principal)->bench->adaptative == 1)
+	if ((*principal)->bench->adaptive == 1)
 	{
-		write(2, "[bench] Strategy: Adaptative / ", 31);
+		write(2, "[bench] Strategy: Adaptive / ", 31);
 		if ((*principal)->bench->simple == 1)
 			write(2, "O2\n", 3);
 		else if ((*principal)->bench->medium == 1)

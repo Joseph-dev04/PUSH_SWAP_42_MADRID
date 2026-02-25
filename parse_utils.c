@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:36:21 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/25 10:09:46 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/25 13:07:40 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_module_status(int arc, char **argv, int *position)
 		if (ft_strnstr(argv[i], "--simple", 8)
 			|| ft_strnstr(argv[i], "--medium", 8)
 			|| ft_strnstr(argv[i], "--complex", 9)
-			|| ft_strnstr(argv[i], "--adaptative", 12))
+			|| ft_strnstr(argv[i], "--adaptive", 12))
 		{
 			*position = i;
 			flags++;

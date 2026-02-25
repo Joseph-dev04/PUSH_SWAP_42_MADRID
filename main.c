@@ -6,7 +6,7 @@
 /*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:31:38 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/25 12:40:13 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/25 13:07:40 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	ft_type(char **argv, int arc, t_principal **principal, int flag)
 	else
 	{
 		if (!charge_num(argv, arc, principal, flag))
-			ft_adaptative(principal);
+			ft_adaptive(principal);
 	}
 }
 
@@ -76,7 +76,7 @@ static void	init_bench(t_stats **bench)
 	(*bench)->simple = 0;
 	(*bench)->medium = 0;
 	(*bench)->complex = 0;
-	(*bench)->adaptative = 0;
+	(*bench)->adaptive = 0;
 	(*bench)->compute_disorder = 0.0f;
 }
 

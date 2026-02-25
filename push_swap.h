@@ -6,7 +6,7 @@
 /*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:29:24 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/25 12:42:42 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/25 13:07:40 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_stats
 	int			simple;
 	int			medium;
 	int			complex;
-	int			adaptative;
+	int			adaptive;
 	float		compute_disorder;
 }	t_stats;
 
@@ -100,7 +100,7 @@ void	sort_three_elements(t_principal **principal);
 
 int		ft_brench_status(int arc, char **argv, int *position);
 int		ft_module_status(int arc, char **argv, int *position);
-void	ft_adaptative(t_principal **principal);
+void	ft_adaptive(t_principal **principal);
 
 void	ft_reset_index(t_list **a);
 

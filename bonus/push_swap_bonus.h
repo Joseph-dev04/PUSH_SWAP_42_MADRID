@@ -6,7 +6,7 @@
 /*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 16:15:54 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/25 12:02:53 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/25 13:24:45 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
-# include <fcntl.h> 
-# include "get_next_line.h"
+# include "get_next_line_bonus.h"
 
 typedef struct s_checker
 {
