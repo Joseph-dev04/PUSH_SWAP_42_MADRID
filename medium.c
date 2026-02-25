@@ -6,7 +6,7 @@
 /*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/19 15:11:53 by aitorres          #+#    #+#             */
-/*   Updated: 2026/02/23 16:36:55 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/25 12:35:54 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,9 +113,7 @@ void	medium_extraccion(t_principal **principal)
 	int	size;
 
 	if (!principal || !*principal || !(*principal)->a)
-	{
 		return ;
-	}
 	size = ft_size_lis((*principal)->a);
 	(*principal)->bench->compute_disorder = compute_disorder((*principal)->a);
 	(*principal)->bench->medium = 1;
@@ -124,6 +122,11 @@ void	medium_extraccion(t_principal **principal)
 		if (size <= 3)
 		{
 			simple_small_extraction(principal);
+			return ;
+		}
+		else if (size <= 5)
+		{
+			sort_five_elements(principal);
 			return ;
 		}
 		ft_reset_index(&(*principal)->a);

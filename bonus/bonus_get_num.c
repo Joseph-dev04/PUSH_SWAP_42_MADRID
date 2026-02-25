@@ -74,9 +74,7 @@ int	ft_itoa_pro(char *str, t_list **a, int index, int *i)
 	t_list	*new;
 	long	limit;
 
-	j = 0;
-	if (str[j] == '-' || str[j] == '+')
-		j++;
+	j = (str[0] == '-' || str[0] == '+');
 	if (!ft_isdigit(str[j]))
 		return (-1);
 	while (ft_isdigit(str[j]))
@@ -88,7 +86,7 @@ int	ft_itoa_pro(char *str, t_list **a, int index, int *i)
 	if (ft_limit(limit, &num))
 		return (-1);
 	*i += j;
-	new = ft_new_list(ft_atoi(num), index);
+	new = ft_new_list((int)limit, index);
 	free(num);
 	ft_add_back(a, new);
 	return (0);

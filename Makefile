@@ -6,7 +6,7 @@
 #    By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/02/20 15:32:45 by jopajuel          #+#    #+#              #
-#    Updated: 2026/02/23 18:58:48 by aitorres         ###   ########.fr        #
+#    Updated: 2026/02/25 13:00:12 by aitorres         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,7 @@ clean:
 
 fclean: clean
 	@$(RM) $(NAME) $(NAME_BONUS)
-	@echo "$(RED)Binarios eliminados."
+	@echo "$(RED)Ejecutadores eliminados."
 
 re: fclean all
 

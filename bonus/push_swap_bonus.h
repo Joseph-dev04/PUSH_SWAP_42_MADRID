@@ -6,7 +6,7 @@
 /*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 16:15:54 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/23 18:57:17 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/25 12:02:53 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ int		ft_size_lis(t_list *a);
 t_list	*ft_new_list(int num, int index);
 int		ft_strlen2(char *str);
 int		ft_isdigit(int c);
-int		ft_atoi(const char *str);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t n);
 char	*ft_substr2(char const *s, unsigned int start, size_t len);
 int		ft_error(void);

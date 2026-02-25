@@ -6,13 +6,13 @@
 /*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 18:20:13 by aitorres          #+#    #+#             */
-/*   Updated: 2026/02/23 17:02:46 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/25 12:35:02 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	sort_three_elements(t_principal **principal)
+void	sort_three_elements(t_principal **principal)
 {
 	int	first;
 	int	second;
@@ -104,8 +104,13 @@ void	simple_extraction(t_principal **principal)
 	(*principal)->bench->simple = 1;
 	size = ft_size_lis((*principal)->a);
 	(*principal)->bench->compute_disorder = compute_disorder((*principal)->a);
-	if (size <= 3)
-		simple_small_extraction(principal);
-	else
-		simple_large_extraction(principal);
+	if ((*principal)->bench->compute_disorder > 0.0f)
+	{
+		if (size <= 3)
+			simple_small_extraction(principal);
+		else if (size <= 5)
+			sort_five_elements(principal);
+		else
+			simple_large_extraction(principal);
+	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:36:21 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/25 11:53:42 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/25 12:01:43 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	ft_itoa_pro(char *str, t_list **a, int index, int *i)
 	if (ft_limit(limit, &num))
 		return (-1);
 	*i += j;
-	new = ft_new_list(limit, index);
+	new = ft_new_list((int)limit, index);
 	free(num);
 	ft_add_back(a, new);
 	return (0);

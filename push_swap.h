@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:29:24 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/25 10:14:10 by jopajuel         ###   ########.fr       */
+/*   Updated: 2026/02/25 12:42:42 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void	ft_free_a(t_list *a);
 int		ft_isdigit(int c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 t_list	*ft_new_list(int num, int index);
-int		ft_atoi(const char *str);
 void	ft_add_back(t_list **lst, t_list *new);
 int		charge_num(char **argv, int arc, t_principal **principal, int flag);
 
@@ -96,6 +95,8 @@ int		duplicate(t_list **a);
 
 void	simple_extraction(t_principal **principal);
 void	medium_extraccion(t_principal **principal);
+void	sort_five_elements(t_principal **principal);
+void	sort_three_elements(t_principal **principal);
 
 int		ft_brench_status(int arc, char **argv, int *position);
 int		ft_module_status(int arc, char **argv, int *position);

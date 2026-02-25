@@ -6,7 +6,7 @@
 /*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 09:48:58 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/23 17:14:38 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/25 12:02:50 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,31 +29,6 @@ int	ft_isdigit(int c)
 	if (c >= 48 && c <= 57)
 		return (1);
 	return (0);
-}
-
-int	ft_atoi(const char *str)
-{
-	int	i;
-	int	nb;
-	int	sign;
-
-	i = 0;
-	nb = 0;
-	sign = 1;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
-	}
-	while (ft_isdigit(str[i]))
-	{
-		nb = nb * 10 + (str[i] - '0');
-		i++;
-	}
-	return (nb * sign);
 }
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
