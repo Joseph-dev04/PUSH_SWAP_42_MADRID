@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   complex.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jopajuel <jopajuel@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/23 13:33:47 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/23 16:39:19 by aitorres         ###   ########.fr       */
+/*   Created: 2026/02/25 10:10:17 by jopajuel          #+#    #+#             */
+/*   Updated: 2026/02/25 10:10:19 by jopajuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	initial_push(t_principal **principal)
 	}
 	if (size <= 3)
 	{
-		simple_small_extraction(principal);
+		simple_small(principal);
 		return ;
 	}
 }
@@ -66,6 +66,7 @@ void	push_back(t_principal **principal)
 
 	(*principal)->bench->complex = 1;
 	(*principal)->bench->compute_disorder = compute_disorder((*principal)->a);
+	ft_quicksort(&(*principal)->a);
 	if ((*principal)->bench->compute_disorder > 0.0f)
 	{
 		initial_push(principal);

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   bonus_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jopajuel <jopajuel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/10 10:10:21 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/20 13:43:57 by jopajuel         ###   ########.fr       */
+/*   Created: 2026/02/20 09:48:58 by jopajuel          #+#    #+#             */
+/*   Updated: 2026/02/23 17:14:38 by aitorres         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "push_swap_bonus.h"
 
-int	ft_strlen(char *str)
+int	ft_strlen2(char *str)
 {
 	int	i;
 
@@ -29,24 +29,6 @@ int	ft_isdigit(int c)
 	if (c >= 48 && c <= 57)
 		return (1);
 	return (0);
-}
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char	*str;
-
-	if (!s)
-		return (NULL);
-	str = malloc(sizeof(char) * len + 1);
-	if (!str)
-		return (NULL);
-	while (start < len)
-	{
-		str[start] = s[start];
-		start++;
-	}
-	str[start] = '\0';
-	return (str);
 }
 
 int	ft_atoi(const char *str)
@@ -100,4 +82,22 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
 	if (needle[0] == 0)
 		return ((char *)haystack);
 	return (NULL);
+}
+
+char	*ft_substr2(char const *s, unsigned int start, size_t len)
+{
+	char	*str;
+
+	if (!s)
+		return (NULL);
+	str = malloc(sizeof(char) * len + 1);
+	if (!str)
+		return (NULL);
+	while (start < len)
+	{
+		str[start] = s[start];
+		start++;
+	}
+	str[start] = '\0';
+	return (str);
 }

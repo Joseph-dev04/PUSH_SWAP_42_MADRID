@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jopajuel <jopajuel@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:29:24 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/24 16:04:55 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/25 10:14:10 by jopajuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include <fcntl.h>
 # include <limits.h>
 
 typedef struct s_list
@@ -66,7 +65,7 @@ void	ft_free_a(t_list *a);
 int		ft_isdigit(int c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 t_list	*ft_new_list(int num, int index);
-long	ft_atoi_long(const char *str);
+int		ft_atoi(const char *str);
 void	ft_add_back(t_list **lst, t_list *new);
 int		charge_num(char **argv, int arc, t_principal **principal, int flag);
 
@@ -121,4 +120,6 @@ void	calcule_cost(t_list *a, t_list *b);
 void	fin_rotate(t_principal **principal);
 t_list	*get_cheapest(t_list *b);
 int		get_total_cost(t_list *node);
+void	update_position(t_list *stack);
+void	simple_small(t_principal **principal);
 #endif

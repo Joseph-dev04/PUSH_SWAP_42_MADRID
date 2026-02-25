@@ -3,74 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jopajuel <jopajuel@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:36:21 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/24 16:04:40 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/25 11:53:42 by jopajuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_brench_status(int arc, char **argv, int *position)
+static long	ft_atoi_long(const char *str)
 {
-	int	i;
-	int	bench;
+	int		i;
+	long	nb;
+	int		sign;
 
-	i = 1;
-	bench = 0;
-	while (i < arc)
+	i = 0;
+	nb = 0;
+	sign = 1;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (ft_strnstr(argv[i], "--bench", ft_strlen(argv[i])))
-		{
-			*position = i;
-			bench++;
-		}
+		if (str[i] == '-')
+			sign = -1;
 		i++;
 	}
-	return (bench);
-}
-
-int	duplicate(t_list	**a)
-{
-	t_list	*n;
-	t_list	*move;
-
-	n = *a;
-	while (n)
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		move = n->next;
-		while (move)
-		{
-			if (n->value == move->value)
-				return (0);
-			move = move->next;
-		}
-		n = n->next;
-	}
-	return (1);
-}
-
-int	ft_module_status(int arc, char **argv, int *position)
-{
-	int	i;
-	int	flags;
-
-	i = 1;
-	flags = 0;
-	while (i < arc)
-	{
-		if (ft_strnstr(argv[i], "--simple", 8)
-			|| ft_strnstr(argv[i], "--medium", 8)
-			|| ft_strnstr(argv[i], "--complex", 9)
-			|| ft_strnstr(argv[i], "--adaptative", 12))
-		{
-			*position = i;
-			flags++;
-		}
+		nb = nb * 10 + (str[i] - '0');
 		i++;
 	}
-	return (flags);
+	return (nb * sign);
+}
+
+int	ft_limit(long limit, char **num)
+{
+	if (limit > 2147483647 || limit < -2147483648)
+	{
+		free(*num);
+		return (-1);
+	}
+	return (0);
 }
 
 int	ft_itoa_pro(char *str, t_list **a, int index, int *i)
@@ -80,7 +54,9 @@ int	ft_itoa_pro(char *str, t_list **a, int index, int *i)
 	t_list	*new;
 	long	limit;
 
-	j = (str[0] == '-' || str[0] == '+');
+	j = 0;
+	if (str[j] == '-' || str[j] == '+')
+		j++;
 	if (!ft_isdigit(str[j]))
 		return (-1);
 	while (ft_isdigit(str[j]))
@@ -89,13 +65,10 @@ int	ft_itoa_pro(char *str, t_list **a, int index, int *i)
 		return (-1);
 	num = ft_substr(str, 0, j);
 	limit = ft_atoi_long(num);
-	if (limit > 2147483647 || limit < -2147483648)
-	{
-		free(num);
+	if (ft_limit(limit, &num))
 		return (-1);
-	}
 	*i += j;
-	new = ft_new_list((int)limit, index);
+	new = ft_new_list(limit, index);
 	free(num);
 	ft_add_back(a, new);
 	return (0);

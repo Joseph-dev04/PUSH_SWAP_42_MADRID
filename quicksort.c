@@ -88,8 +88,8 @@ void	*ft_quicksort(t_list **a)
 		temp = temp->next;
 		i++;
 	}
-	ft_logic(&list_num, 0, i);
-	ft_indexacion(list_num, a, 0, i);
+	ft_logic(&list_num, 0, i - 1);
+	ft_indexacion(list_num, a, 0, i - 1);
 	free(list_num);
 	return (0);
 }

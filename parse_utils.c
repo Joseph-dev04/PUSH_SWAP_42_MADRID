@@ -3,14 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aitorres <aitorres@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jopajuel <jopajuel@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/10 09:36:21 by jopajuel          #+#    #+#             */
-/*   Updated: 2026/02/23 18:54:04 by aitorres         ###   ########.fr       */
+/*   Updated: 2026/02/25 10:09:46 by jopajuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_brench_status(int arc, char **argv, int *position)
+{
+	int	i;
+	int	bench;
+
+	i = 1;
+	bench = 0;
+	while (i < arc)
+	{
+		if (ft_strnstr(argv[i], "--bench", ft_strlen(argv[i])))
+		{
+			*position = i;
+			bench++;
+		}
+		i++;
+	}
+	return (bench);
+}
+
+int	ft_module_status(int arc, char **argv, int *position)
+{
+	int	i;
+	int	flags;
+
+	i = 1;
+	flags = 0;
+	while (i < arc)
+	{
+		if (ft_strnstr(argv[i], "--simple", 8)
+			|| ft_strnstr(argv[i], "--medium", 8)
+			|| ft_strnstr(argv[i], "--complex", 9)
+			|| ft_strnstr(argv[i], "--adaptative", 12))
+		{
+			*position = i;
+			flags++;
+		}
+		i++;
+	}
+	return (flags);
+}
 
 int	duplicate(t_list	**a)
 {
